@@ -42,4 +42,12 @@ vacancies/(stat, data) - вакансии контрагента [подробн
 
 trademarks, trademarks/image - товарные знаки контрагента [подробное описание](spp_api/modules/Patent/README.md)
 
-contractor_history - История изменений контрагента [подробное описание](doc/history/README.md)
+contractor-history - История изменений контрагента [подробное описание](doc/history/README.md)
+
+contacts-official - Контактные данные контрагента [подробное описание](doc/contacts/README.md)
+
+excerpts/(list, last, file) - Выписки контрагента [подробное описание](doc/excerpts/README.md)
+
+search - Поисковые методы [подробное описание](doc/search/README.md)
+
+branches - Филиалы контрагента [подробное описание](doc/branches/README.md)

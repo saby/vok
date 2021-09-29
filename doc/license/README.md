@@ -2,6 +2,10 @@
 
 Получить статистику по контрагенту.
 
+**Ограничения по лицензии** :
+
+Доступен в базовой версии лицензии.
+
 **URL** : `/license/stat`
 
 **Обязательные параметры** :
@@ -46,13 +50,42 @@
 **Пример ответа**
 
 ```json
-{
-  "active_vacancies_count": 2,
-  "total_vacancies_count": 9
-}
+[
+  {
+    "count_active": 0,
+    "count_total": 2,
+    "doc_type": "лицензия",
+    "source": "Росгидромет"
+  },
+  {
+    "count_active": 1,
+    "count_total": 6,
+    "doc_type": "лицензия",
+    "source": "Роскомнадзор"
+  },
+  {
+    "count_active": 2,
+    "count_total": 2,
+    "doc_type": "лицензия",
+    "source": "ФСТЭК"
+  },
+  {
+    "count_active": 14,
+    "count_total": 29,
+    "doc_type": "лицензия",
+    "source": "Другие"
+  }
+]
 ```
 
+***
+
 Получить список лицензий по контрагенту.
+
+**Ограничения по лицензии** :
+
+В базовой версии лицензии доступны 3 последние документа по для каждого органа проверки.
+В расширенной лицензии достпны все документы.
 
 **URL** : `/license/data`
 
@@ -64,7 +97,7 @@
 - `kpp(str)` - КПП контрагента
 - `limit(str)` - количество записей в запросе, по умолчанию 10, максимум 100
 - `page(str)` - страница запроса, по умолчанию 0
-- `is_active(str)` - флаг активности вакансии, по умолчанию и при значении false отдаются все. 
+- `is_active(str)` - флаг активности лицензии, по умолчанию и при значении false отдаются все. 
 
 **Метод** : `GET`
 
@@ -93,21 +126,9 @@
           "description": "объект выдачи",
           "type": "string"
         },
-        "cert_count": {
-          "description": "количество сертификата",
-          "type": "integer"
-        },
         "license_kpp": {
           "description": "кпп лицензии",
           "type": "string"
-        },
-        "total_count": {
-          "description": "общее количество",
-          "type": "integer"
-        },
-        "expired_count": {
-          "description": "количество просроченных",
-          "type": "integer"
         },
         "reg_number": {
           "description": "рег номер",
@@ -171,21 +192,26 @@
         },
         "change_status_details": {
           "description": "Детали изменения статуса",
-          "type": "object",
-          "properties": {
-            "date_begin": {
-              "description": "Дата начала",
-              "type": "string"
-            },
-            "date_end": {
-              "description": "Дата окончания",
-              "type": "string"
-            },
-            "status": {
-              "description": "Статус",
-              "type": "bool"
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "date_begin": {
+                  "description": "Дата начала",
+                  "type": "string"
+                },
+                "date_end": {
+                  "description": "Дата окончания",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "Статус",
+                  "type": "bool"
+                }
+              }
             }
-          }
+          ]
         }
       }
     }
@@ -205,13 +231,10 @@
     "descriptions": [
       "Деятельность по монтажу, техническому обслуживанию и ремонту средств обеспечения пожарной безопасности зданий и сооружений"
     ],
-    "cert_count": null,
     "places": [
       "188477, Ленинградская область, Кингисеппский район, Вистинское сельское поселение, Морской торговый порт Усть-Луга, Комплекс по перевалке и фракционированию стабильного газового конденсата и продуктов его переработки"
     ],
     "license_kpp": null,
-    "total_count": null,
-    "expired_count": null,
     "reg_number": null,
     "product_common_name": null,
     "change_status_details": null,

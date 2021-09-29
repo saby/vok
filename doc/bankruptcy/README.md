@@ -78,6 +78,10 @@
       "description": "Заголовок сообщения",
       "type": "string"
     },
+    "debtor_status": {
+      "description": "текстовый статус",
+      "type": "string"
+    },
     "creditors": {
       "description": "Кредиторы",
       "type": "array",
@@ -187,6 +191,7 @@
   "debtor_link": "http://bankrot.fedresurs.ru/OrganizationCard.aspx?ID=None",
   "has_more_creditors": false,
   "inn": "7707083893",
-  "manager_inn": "550514330813"
+  "manager_inn": "550514330813",
+  "debtor_status": ""
 }
 ```

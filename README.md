@@ -15,6 +15,8 @@ https://api.sbis.ru/vok-demo/
 7708503727 — РЖД  
 7709464710 — Эталонинвест  
 
+В демо-версии не доступны следующие методы: pdf/business-report, pdf/due-diligence-report, pdf/financial-report
+
 **Авторизация**
 
 Подробно об авторизации - [https://sbis.ru/help/integration/api/auth](https://sbis.ru/help/integration/api/auth). Итерисующие пункты: "Добавить приложение" и "Настроить сервисную авторизацию".

@@ -608,6 +608,10 @@
 {
   "type": "object",
   "properties": {
+    "additional_sum_value": {
+      "type": "number",
+      "description": "Сумма баллов по дополнительным аспектам"
+    },
     "advantages_sum_value": {
       "type": "number",
       "description": "Суммарное значение положительных аспектов надежности"
@@ -616,12 +620,34 @@
       "type": "number",
       "description": "Суммарное значение отрицательных аспектов надежности"
     },
+    "has_critical": {
+      "type": "boolean",
+      "description": "Признак наличия критически отрицательного аспекта"
+    },
     "advantages": {
       "type": "array",
       "description": "Список положительных аспектов влияющих на надежность",
       "items": [
         {
-          "type": "string"
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Описание аспекта"
+            },
+            "comments": {
+              "type": "string",
+              "description": "Комментарии к аспекту"
+            },
+            "links": {
+              "type": "string",
+              "description": "Ссылки на источники"
+            },
+            "value": {
+              "type": "number",
+              "description": "Значение аспекта"
+            }
+          }
         }
       ]
     },
@@ -630,7 +656,25 @@
       "description": "Список отрицательных аспектов влияющих на надежность",
       "items": [
         {
-          "type": "string"
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Описание аспекта"
+            },
+            "comments": {
+              "type": "string",
+              "description": "Комментарии к аспекту"
+            },
+            "links": {
+              "type": "string",
+              "description": "Ссылки на источники"
+            },
+            "value": {
+              "type": "number",
+              "description": "Значение аспекта"
+            }
+          }
         }
       ]
     }
@@ -642,15 +686,24 @@
 
 ```json
 {
-  "advantages_sum_value": 123,
-  "disadvantages_sum_value": 123,
+  "additional_sum_value": 0,
+  "advantages_sum_value": 5,
+  "disadvantages_sum_value": -7,
   "advantages": [
-    "Задолженность по налогам, з/п и кредитным платежам не обнаружена",
-    "Компания способна расплатиться с текущими долгами"
+    {
+      "description": "Компания финансово устойчива",
+      "links": null,
+      "comments": ["Обязательства в балансе составляют значительную долю – 38.3%"],
+      "value": 5
+    }
   ],
   "disadvantages ": [
-    "Риск потери независимости из-за имеющихся обязательств",
-    "Вероятность банкротства"
+    {
+      "description": "Компания не отвечает на требования налоговой",
+      "links": null,
+      "comments": null,
+      "value": -7
+    }
   ]
 }
 ```

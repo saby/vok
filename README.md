@@ -1,6 +1,12 @@
 # API сервиса «Всё о компаниях»
 
-**Демо-стенд**
+###Клиент для Python3
+
+https://pypi.org/project/sabyvok/
+
+[README](client-py/README.md)
+
+###Демо-стенд
 
 Демо-стенд доступен без авторизации  
 https://api.sbis.ru/vok-demo/  
@@ -16,6 +22,8 @@ https://api.sbis.ru/vok-demo/
 7709464710 — Эталонинвест  
 
 В демо-версии не доступны следующие методы: pdf/business-report, pdf/due-diligence-report, pdf/financial-report
+
+###Получение данных
 
 **Авторизация**
 

@@ -66,7 +66,7 @@ class SabyVokClient:
             dict: request headers
         """
         return {
-            "User-Agent": "SabyVok Python Client / 1.0.0",
+            "User-Agent": "SabyVok Python Client / 1.0.1",
             "X-SBISAccessToken": self._saby_access_token,
             "X-SBISSessionId": self._saby_session_id,
             "Content-Type": "application/json; charset=utf-8",

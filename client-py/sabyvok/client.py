@@ -1,6 +1,25 @@
 import requests
 
 
+def inn_or_ogrn(func):
+    """
+    Decorator checks inn or ogrn availability
+    """
+    def wrapper(*args, **kwargs):
+        inn = args[1] if len(args) > 1 else kwargs.get('inn')
+        ogrn = args[2] if len(args) > 2 else kwargs.get('ogrn')
+        if not inn and not ogrn:
+            raise NoInnOrOgrnError
+        return func(*args, **kwargs)
+    return wrapper
+
+
+class NoInnOrOgrnError(Exception):
+    """
+    Raises on not enough arguments
+    """
+
+
 class SabyVokClient:
     _host = 'http://api.sbis.ru/vok/'
     _oauth_url = 'https://api.sbis.ru/oauth/service/'
@@ -18,6 +37,7 @@ class SabyVokClient:
         self._session_id = None
         self._access_token = None
 
+    @inn_or_ogrn
     def req(self, inn=None, ogrn=None):
         """
         Main requisites
@@ -27,7 +47,7 @@ class SabyVokClient:
             ogrn (str): OGRN
 
         Returns:
-            dict: https://github.com/saby/vok/blob/main/doc/req/README.md
+            list: https://github.com/saby/vok/blob/main/doc/req/README.md
         """
         return self._perform_request(
             'req',

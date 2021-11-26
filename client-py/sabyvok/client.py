@@ -38,23 +38,110 @@ class SabyVokClient:
         self._access_token = None
 
     @inn_or_ogrn
-    def req(self, inn=None, ogrn=None):
+    def req(self, inn=None, ogrn=None, kpp=None):
         """
         Main requisites
 
         Args:
             inn (str): INN
             ogrn (str): OGRN
+            kpp (str): KPP
 
         Returns:
             list: https://github.com/saby/vok/blob/main/doc/req/README.md
         """
-        return self._perform_request(
-            'req',
-            {
-                'inn': inn,
-                'ogrn': ogrn,
-            }
+        return self._get_main_data('req', inn, ogrn, kpp)
+
+    @inn_or_ogrn
+    def logo(self, inn=None, ogrn=None, kpp=None):
+        """
+        Logo
+
+        Args:
+            inn (str): INN
+            ogrn (str): OGRN
+            kpp (str): KPP
+
+        Returns:
+            binary: https://github.com/saby/vok/blob/main/doc/req/README.md
+        """
+        return self._get_main_data('logo', inn, ogrn, kpp)
+
+    @inn_or_ogrn
+    def registration_information(self, inn=None, ogrn=None, kpp=None):
+        """
+        Main requisites
+
+        Args:
+            inn (str): INN
+            ogrn (str): OGRN
+            kpp (str): KPP
+
+        Returns:
+            list: https://github.com/saby/vok/blob/main/doc/req/README.md
+        """
+        return self._get_main_data('registration-information', inn, ogrn, kpp)
+
+    @inn_or_ogrn
+    def tenders_info(self, inn=None, ogrn=None):
+        """
+        Tenders info
+
+        Args:
+            inn (str): INN
+            ogrn (str): OGRN
+
+        Returns:
+            list: https://github.com/saby/vok/blob/main/doc/tenders/README.md
+        """
+        return self._get_main_data('tenders-info', inn, ogrn)
+
+    @inn_or_ogrn
+    def tenders(self, inn=None, ogrn=None, limit=10, page=0):
+        """
+        Tenders info
+
+        Args:
+            inn (str): INN
+            ogrn (str): OGRN
+
+        Returns:
+            list: https://github.com/saby/vok/blob/main/doc/tenders/README.md
+        """
+        params = {
+            'inn': inn,
+            'ogrn': ogrn,
+            'limit': limit,
+            'page':  page,
+        }
+        return self._perform_request_json('tenders', params)
+
+    def _get_main_data(self, url, inn=None, ogrn=None, kpp=None):
+        """
+        Get simple data
+
+        Args:
+            inn (str): INN
+            ogrn (str): OGRN
+            kpp (str): KPP
+
+        Returns:
+            (list|dict): Data from server
+        """
+        params = {
+            'inn': inn,
+            'ogrn': ogrn,
+        }
+        if kpp:
+            params['kpp'] = kpp
+        if url == 'logo':
+            return self._perform_request_binary(
+                url,
+                params
+            )
+        return self._perform_request_json(
+            url,
+            params
         )
 
     @property
@@ -111,7 +198,7 @@ class SabyVokClient:
         self._access_token = response['access_token']
         self._session_id = response['sid']
 
-    def _perform_request(self, url, params):
+    def _perform_request(self, url, params, method='get'):
         """
         Performs the request to Saby API
 
@@ -120,7 +207,36 @@ class SabyVokClient:
             params (dict): get params
 
         Returns:
-            dict: obtained data
+            requests.response: obtained data
         """
         full_url = f'{self._host}{url}'
-        return requests.get(full_url, params, headers=self._request_headers).json()
+        if method == 'post':
+            return requests.post(full_url, params=params, headers=self._request_headers)
+        else:
+            return requests.get(full_url, params=params, headers=self._request_headers)
+
+    def _perform_request_json(self, url, params, method='get'):
+        """
+        Returns json from server
+
+        Args:
+            url (str): url
+            params (dict): get params
+
+        Returns:
+            (dict|list): obtained data
+        """
+        return self._perform_request(url, params, method).json()
+
+    def _perform_request_binary(self, url, params, method='get'):
+        """
+        Returns json from server
+
+        Args:
+            url (str): url
+            params (dict): get params
+
+        Returns:
+            binary: obtained data
+        """
+        return self._perform_request(url, params, method).content

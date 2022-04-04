@@ -108,3 +108,5 @@ search - Поисковые методы [подробное описание](d
 branches - Филиалы контрагента [подробное описание](doc/branches/README.md)
 
 client/stat - Статистика запросов клиента [подробное описание](doc/client/README.md)
+
+pledges, pledges/file - Залог/Лизинг [подробное описание](doc/pledges/README.md)

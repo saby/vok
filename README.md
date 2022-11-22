@@ -77,7 +77,7 @@ owners, affiliate, dirs-history - данные о лицах связанных 
 
 subscriptions/(events, contractors, subscribe, unsubscribe) - данные о событиях, подписка на них [подробное описание](doc/subscriptions/README.md)
 
-pdf/(business-report, due-diligence-report, financial-report, signed-excerpt) - карточка контрагента в формате pdf [подробное описание](doc/pdf/README.md)
+pdf/(business-report, due-diligence-report, financial-report, signed-excerpt), xml/(egrul-excerpt, reporting-excerpt) - карточка контрагента в формате pdf [подробное описание](doc/pdf/README.md)
 
 finance, cost-business, reliability, market-position, creditworthiness - данные об аналитике [подробное описание](doc/finance/README.md)
 

@@ -8,8 +8,10 @@ https://pypi.org/project/sabyvok/
 
 ###Демо-стенд
 
-Демо-стенд доступен без авторизации  
+Демо-стенд доступен без авторизации. Дальше к адресной строке добавляется метод и параметры запроса.  
 https://api.sbis.ru/vok-demo/  
+https://sbis.ru/contragents_api_demo - интерфейс для демо стенда
+
 Для демо-версии доступны ИНН:  
 7605016030 — Тензор  
 7736050003 — Газпром  
@@ -21,7 +23,9 @@ https://api.sbis.ru/vok-demo/
 7708503727 — РЖД  
 7709464710 — Эталонинвест  
 
-В демо-версии не доступны следующие методы: pdf/business-report, pdf/due-diligence-report, pdf/financial-report
+В демо-версии не доступны методы отдающие файлы
+
+
 
 ###Получение данных
 
@@ -77,7 +81,7 @@ owners, affiliate, dirs-history - данные о лицах связанных 
 
 subscriptions/(events, contractors, subscribe, unsubscribe) - данные о событиях, подписка на них [подробное описание](doc/subscriptions/README.md)
 
-pdf/(business-report, due-diligence-report, financial-report, signed-excerpt), xml/(egrul-excerpt, reporting-excerpt) - карточка контрагента в формате pdf [подробное описание](doc/pdf/README.md)
+pdf/(business-report, due-diligence-report, financial-report, signed-excerpt), xml/(egrul-excerpt, reporting-excerpt) -  [подробное описание](doc/pdf/README.md)
 
 finance, cost-business, reliability, market-position, creditworthiness - данные об аналитике [подробное описание](doc/finance/README.md)
 

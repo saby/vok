@@ -1,7 +1,7 @@
 ## Реквизиты контрагента:
 
 Получить логотип контрагента. 
-Можно определить есть ли она по ключу has_logo в методе req.
+Можно определить есть ли он по ключу has_logo в методе req.
 
 **Ограничения по лицензии**:
 
@@ -72,6 +72,29 @@ File/null
     },
     "fss": {
       "description": "Информация о ФСС",
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "registration_date": {
+              "description": "Дата регистрации",
+              "type": "string"
+            },
+            "name": {
+              "description": "Названеи организации",
+              "type": "string"
+            },
+            "withdrawal_date": {
+              "description": "Дата снятия",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "fns": {
+      "description": "Информация о ФНС",
       "type": "array",
       "items": [
         {
@@ -456,6 +479,10 @@ taxation_form_code, taxation_form_name)
       "description": "Бик банка",
       "type": "string"
     },
+    "bank_swbic": {
+      "description": "Свифт банка",
+      "type": "string"
+    },
     "bank_bic_rcc": {
       "description": "БИК РКЦ банка",
       "type": "string"
@@ -511,6 +538,10 @@ taxation_form_code, taxation_form_name)
     "egais": {
       "description": "ЕГАИС",
       "type": "string"
+    },
+    "authorized_capital": {
+      "description": "Уставной капитал",
+      "type": "float"
     },
     "region": {
       "description": "Регион",
@@ -727,6 +758,10 @@ taxation_form_code, taxation_form_name)
               "description": "Дата начала",
               "type": "string"
             },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
+              "type": "string"
+            },
             "url": {
               "description": "ссылка на источник",
               "type": "string"
@@ -739,6 +774,28 @@ taxation_form_code, taxation_form_name)
           "properties": {
             "url": {
               "description": "ссылка на источник",
+              "type": "string"
+            },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
+              "type": "string"
+            }
+          }
+        },
+        "black_list": {
+          "description": "Организация в черном списке ЦБ РФ. Признаки нелегальной деятельности на финансовом рынке",
+          "type": "object",
+          "properties": {
+            "url": {
+              "description": "ссылка на источник",
+              "type": "string"
+            },
+            "signs": {
+              "description": "признаки нелегальной деятельности",
+              "type": "string"
+            },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
               "type": "string"
             }
           }
@@ -755,6 +812,10 @@ taxation_form_code, taxation_form_name)
               "description": "Дата окончания",
               "type": "string"
             },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
+              "type": "string"
+            },
             "url": {
               "description": "ссылка на источник",
               "type": "string"
@@ -767,6 +828,10 @@ taxation_form_code, taxation_form_name)
           "properties": {
             "date_begin": {
               "description": "Дата начала",
+              "type": "string"
+            },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
               "type": "string"
             },
             "court_name": {
@@ -795,6 +860,10 @@ taxation_form_code, taxation_form_name)
               "description": "Дата начала",
               "type": "string"
             },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
+              "type": "string"
+            },
             "url": {
               "description": "ссылка на источник",
               "type": "string"
@@ -807,6 +876,10 @@ taxation_form_code, taxation_form_name)
           "properties": {
             "membership_type": {
               "description": "Описание",
+              "type": "string"
+            },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
               "type": "string"
             },
             "url": {
@@ -825,6 +898,10 @@ taxation_form_code, taxation_form_name)
           "properties": {
             "date_begin": {
               "description": "Дата начала",
+              "type": "string"
+            },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
               "type": "string"
             },
             "url": {
@@ -854,6 +931,10 @@ taxation_form_code, taxation_form_name)
                       "description": "Бик банка",
                       "type": "string"
                     },
+                    "base": {
+                      "description": "Основание",
+                      "type": "string"
+                    },
                     "bank_name": {
                       "description": "Название банка",
                       "type": "string"
@@ -870,6 +951,10 @@ taxation_form_code, taxation_form_name)
           "properties": {
             "date_begin": {
               "description": "Дата начала",
+              "type": "string"
+            },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
               "type": "string"
             },
             "url": {
@@ -921,6 +1006,10 @@ taxation_form_code, taxation_form_name)
               "description": "ссылка на источник",
               "type": "string"
             },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
+              "type": "string"
+            },
             "total_count": {
               "description": "общее количество",
               "type": "integer"
@@ -964,6 +1053,10 @@ taxation_form_code, taxation_form_name)
             },
             "url": {
               "description": "ссылка на источник",
+              "type": "string"
+            },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
               "type": "string"
             },
             "total_count": {
@@ -1029,6 +1122,10 @@ taxation_form_code, taxation_form_name)
             },
             "url": {
               "description": "ссылка на источник",
+              "type": "string"
+            },
+            "actuality_date": {
+              "description": "Дата сверки с источником",
               "type": "string"
             },
             "total_count": {
@@ -1104,6 +1201,10 @@ taxation_form_code, taxation_form_name)
           "description": "Имеет взыскиваемую судебными приставами задолженность более 1000 р",
           "type": "object",
           "properties": {
+            "actuality_date": {
+              "description": "Дата сверки с источником",
+              "type": "string"
+            },
             "url": {
               "description": "ссылка на источник",
               "type": "string"
@@ -1114,6 +1215,10 @@ taxation_form_code, taxation_form_name)
           "description": "По данным ФНС не сдает отчетность более 1 года",
           "type": "object",
           "properties": {
+            "actuality_date": {
+              "description": "Дата сверки с источником",
+              "type": "string"
+            },
             "url": {
               "description": "ссылка на источник",
               "type": "string"
@@ -1185,6 +1290,7 @@ taxation_form_code, taxation_form_name)
   "bank_reg_number": null,
   "bank_correspondent_account": null,
   "bank_bic": null,
+  "bank_swbic": null,
   "bank_bic_rcc": null,
   "bank_type_name": null,
   "sb": null,

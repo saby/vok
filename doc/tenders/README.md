@@ -11,19 +11,51 @@
 **Метод** : `GET`
 
 **Формат ответа:**
-``` json
+```json
 {
-    'lose_price': общая сумма проигранных торгов,
-    'lose_cnt': количество проигранных торгов,
-    'customer_count': количество организованных торгов,
-    'rejected_count': количество не допущенных торгов,
-    'rejected_price': общая сумма недопущенных торгов,
-    'sum_price': общая сумма всех торгов,
-    'tender_count': общее количество участия в торгаъ,
-    'win_count': общее количество побед в торгах,
-    'win_price': общая сумма побед
-    'no_reduce_count': количество побед без снижение цен,
-    'no_reduce_price': общая сумма побед без снижения,
+  "type": "object",
+  "properties": {
+    "lose_price": {
+      "type": "number",
+      "description": "Общая сумма проигранных торгов"
+    },
+    "lose_cnt": {
+      "type": "number",
+      "description": "Количество проигранных торгов"
+    },
+    "customer_count": {
+      "type": "number",
+      "description": "Количество организованных торгов"
+    },
+    "rejected_count": {
+      "type": "number",
+      "description": "Количество не допущенных торгов"
+    },
+    "sum_price": {
+      "type": "number",
+      "description": "общая сумма всех торгов"
+    },
+    "tender_count": {
+      "type": "number",
+      "description": "общее количество участия в торгах"
+    },
+    "win_count": {
+      "type": "number",
+      "description": "общее количество побед в торгах"
+    },
+    "win_price": {
+      "type": "number",
+      "description": "общая сумма побед"
+    },
+    "no_reduce_count": {
+      "type": "number",
+      "description": "количество побед без снижение цен"
+    },
+    "no_reduce_price": {
+      "type": "number",
+      "description": "общая сумма побед без снижения"
+    }
+  }
 }
 ```
 
@@ -51,25 +83,66 @@
 
 **Формат ответа:**
 
-``` json
+```json
 {
-    'company_name' (str): нзвание ЮЛ организовавщая торг,
-    'lot_name' (str): имя лота,
-    'tp_type_name'  (str): имя группы торга,
-    'winner_name'  (str): название победивщей ЮЛ,
-    'region'  (str): регион торга,
-    'tp_brief'  (str): название процедуры,
-    'proc_type'  (str): тип процедуры,
-    'industry' (list(str)): сферы деятельности торга,
-    'amount' (float): цена торга,
-    'endofferdate'  (str): дата окончания торга,
-    'publishdate'  (str): дата публикации торга,
+  "type": "object",
+  "properties": {
+    "company_name": {
+      "type": "string",
+      "description": "название ЮЛ организовавшей торг"
+    },
+    "lot_name": {
+      "type": "string",
+      "description": "имя лота"
+    },
+    "tp_type_name": {
+      "type": "string",
+      "description": "имя группы торга"
+    },
+    "winner_name": {
+      "type": "string",
+      "description": "название победившей ЮЛ"
+    },
+    "region": {
+      "type": "string",
+      "description": "регион торга"
+    },
+    "tp_brief": {
+      "type": "string",
+      "description": "название процедуры"
+    },
+    "proc_type": {
+      "type": "string",
+      "description": "тип процедуры"
+    },
+    "amount": {
+      "type": "number",
+      "description": "цена торга"
+    },
+    "endofferdate": {
+      "type": "str",
+      "description": "дата окончания торга"
+    },
+    "publishdate": {
+      "type": "str",
+      "description": "дата публикации торга"
+    },
+    "industry": {
+      "type": "array",
+      "items": [
+        {
+          "description": "сфера деятельности торга"
+          "type": "str"
+        }
+      ]
+    }
+  }
 }
 ```
 
 ## Заказ торгов:
 
-Список организованных ЮЛ торгов
+Список организованных ЮЛ торгов 
 
 **URL** : `/customers/`
 
@@ -91,19 +164,51 @@
 
 **Формат ответа:**
 
-``` json
-{    
-    'company_name' (str): название ЮЛ заказчика,
-    'region' (str): регион заказчика,
-    'contact_name' (str): название руководителя заказчика
-    'dir_name' (str): ФИО руководителя,
-    'area' (str): сфера торга,
-    'count_try' (int): общее количество участников,
-    'count_win' (int): выйгранных заявок,
-    'contract_count' (int): контрактов,
-    'price_win' (float): сумма побед
-    'win_percent' (int): процент побед,
-    'contract_price' (float): цена контракта,
+```json
+{
+  "type": "object",
+  "properties": {
+    "company_name": {
+      "type": "string",
+      "description": "название ЮЛ заказчика"
+    },
+    "region": {
+      "type": "string",
+      "description": "регион заказчика"
+    },
+    "dir_name": {
+      "type": "string",
+      "description": "ФИО или название руководителя"
+    },
+    "area": {
+      "type": "string",
+      "description": "сфера деятельности заказчика"
+    },
+    "count_try": {
+      "type": "number",
+      "description": "общее количество участников"
+    },
+    "count_win": {
+      "type": "number",
+      "description": "выигранных заявок"
+    },
+    "contract_count": {
+      "type": "number",
+      "description": "контрактов"
+    },
+    "price_win": {
+      "type": "number",
+      "description": "сумма побед"
+    },
+    "win_percent": {
+      "type": "number",
+      "description": "процент побед"
+    },
+    "contract_price": {
+      "type": "number",
+      "description": "цена контрактов"
+    }
+  }
 }
 ```
 
@@ -131,16 +236,46 @@
 
 **Формат ответа:**
 
-``` json
+```json
 {
-    'company_name' (str): название конкурента ЮЛ
-    'count_try' (int): сколько было пересечений,
-    'count_win' (int): сколько победил в пересекающихся торгах,
-    'price_win' (int): сумма при победе,
-    'region' (str): регион проведения пересекающегося торга,
-    'count_all' (int): общее количество участников,
-    'price_win_all' (int): общая сумма побед,
-    'dir_name' (str): ФИО или название руководителя,
-    'area' (str): сфера деятельности,
+  "type": "object",
+  "properties": {
+    "company_name": {
+      "type": "string",
+      "description": "название конкурента ЮЛ"
+    },
+    "count_try": {
+      "type": "number",
+      "description": "сколько было пересечений"
+    },
+    "count_win": {
+      "type": "number",
+      "description": "сколько победил в пересекающихся торгах"
+    },
+    "price_win": {
+      "type": "number",
+      "description": " сумма при победе"
+    },
+    "region": {
+      "type": "string",
+      "description": "регион проведения пересекающегося торга"
+    },
+    "count_all": {
+      "type": "number",
+      "description": "Общее количество участников"
+    },
+    "price_win_all": {
+      "type": "number",
+      "description": "общая сумма побед"
+    },
+    "dir_name": {
+      "type": "string",
+      "description": "ФИО или название руководителя"
+    },
+    "area": {
+      "type": "string",
+      "description": "сфера деятельности"
+    }
+  }
 }
 ```

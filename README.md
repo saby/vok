@@ -77,7 +77,7 @@ req, logo, registration-information - основные реквизиты кон
 
 tenders, tenders-info, customers, rivals - данные о торгах [подробное описание](doc/tenders/README.md)
 
-owners, affiliate, dirs-history - данные о лицах связанных с контрагентом [подробное описание](doc/affiliate/README.md)
+owners, affiliate, dirs-history, founders-history - данные о лицах связанных с контрагентом [подробное описание](doc/affiliate/README.md)
 
 subscriptions/(events, contractors, subscribe, unsubscribe) - данные о событиях, подписка на них [подробное описание](doc/subscriptions/README.md)
 
@@ -87,13 +87,13 @@ finance, cost-business, reliability, market-position, creditworthiness - дан�
 
 statistic-courts, courts, executive-lists - данные о судах контрагента [подробное описание](doc/courts/README.md)
 
-bankruptcy - данные о банкротстве контрагента [подробное описание](doc/bankruptcy/README.md)
+bankruptcy, bankruptcy/file - данные о банкротстве контрагента [подробное описание](doc/bankruptcy/README.md)
 
 fea - статистика о внешнеэкономической деятельности контрагента [подробное описание](doc/fea/README.md)
 
 license/(stat, data) - лицензии и сертификаты контрагента [подробное описание](doc/license/README.md)
 
-sro - присутствие контрагента в СРО [подробное описание](doc/sro/README.md)
+sro, sro/file - присутствие контрагента в СРО [подробное описание](doc/sro/README.md)
 
 inspections/(stat, data) - проверки контрагента [подробное описание](doc/inspections/README.md)
 

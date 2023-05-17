@@ -59,7 +59,7 @@ File/null
               "type": "string"
             },
             "name": {
-              "description": "Названеи организации",
+              "description": "Название организации",
               "type": "string"
             },
             "withdrawal_date": {
@@ -82,7 +82,7 @@ File/null
               "type": "string"
             },
             "name": {
-              "description": "Названеи организации",
+              "description": "Название организации",
               "type": "string"
             },
             "withdrawal_date": {
@@ -105,7 +105,7 @@ File/null
               "type": "string"
             },
             "name": {
-              "description": "Названеи организации",
+              "description": "Название организации",
               "type": "string"
             },
             "withdrawal_date": {
@@ -128,11 +128,11 @@ File/null
               "type": "string"
             },
             "name": {
-              "description": "Названеи организации",
+              "description": "Название организации",
               "type": "string"
             },
             "way": {
-              "description": "способо",
+              "description": "способ",
               "type": "string"
             }
           }
@@ -151,11 +151,11 @@ File/null
               "type": "string"
             },
             "name": {
-              "description": "Названеи организации",
+              "description": "Название организации",
               "type": "string"
             },
             "way": {
-              "description": "способо",
+              "description": "способ",
               "type": "string"
             }
           }
@@ -178,7 +178,7 @@ File/null
               "type": "string"
             },
             "name": {
-              "description": "Названеи организации",
+              "description": "Название организации",
               "type": "string"
             },
             "termination_date": {
@@ -328,7 +328,7 @@ taxation_form_code, taxation_form_name)
       "type": "integer"
     },
     "okved": {
-      "description": "Номера оквед",
+      "description": "Номера оквэд",
       "type": "string"
     },
     "reg_number_pf": {
@@ -349,6 +349,10 @@ taxation_form_code, taxation_form_name)
     },
     "legal_form_text": {
       "description": "Правовая форма",
+      "type": "string"
+    },
+    "legal_form": {
+      "description": "Код правовой формы",
       "type": "string"
     },
     "entrepreneur": {
@@ -452,11 +456,11 @@ taxation_form_code, taxation_form_name)
       "type": "string"
     },
     "main_okved": {
-      "description": "Номер основного ОКВЕД",
+      "description": "Номер основного ОКВЭД",
       "type": "string"
     },
     "main_okved_name": {
-      "description": "Название основного ОКВЕД",
+      "description": "Название основного ОКВЭД",
       "type": "string"
     },
     "oktmo": {
@@ -599,7 +603,7 @@ taxation_form_code, taxation_form_name)
       ]
     },
     "link": {
-      "description": "Сылка на карточку контрагента",
+      "description": "Ссылка на карточку контрагента",
       "type": "string"
     },
     "has_logo": {

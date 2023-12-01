@@ -38,7 +38,7 @@
 
 ```json
 {
-  "requests_count_limit": 10000,
+  "requests_count_limit": 30000,
   "requests_count": 5,
   "unique_value_limit": 5000,
   "unique_value_count": 5

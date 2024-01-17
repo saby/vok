@@ -648,8 +648,13 @@
               "description": "Комментарии к аспекту"
             },
             "links": {
-              "type": "string",
-              "description": "Ссылки на источники"
+              "type": "array",
+              "description": "ссылки",
+              "items": [
+                {
+                  "type": "str"
+                }
+              ]
             },
             "value": {
               "type": "number",
@@ -675,8 +680,13 @@
               "description": "Комментарии к аспекту"
             },
             "links": {
-              "type": "string",
-              "description": "Ссылки на источники"
+              "type": "array",
+              "description": "ссылки",
+              "items": [
+                {
+                  "type": "str"
+                }
+              ]
             },
             "value": {
               "type": "number",
@@ -710,6 +720,575 @@
       "description": "Компания не отвечает на требования налоговой",
       "links": null,
       "comments": null,
+      "value": -7
+    }
+  ]
+}
+```
+
+## Надежность блоками:
+
+Получить аналитические данные по надежности.
+
+**Ограничения по лицензии**: В базовой лицензии показываются только итоговые суммарные значения показателей надежности без расшифровки и описания.
+
+**URL** : `/reliability/blocks/`
+
+**Обязательные параметры** :
+- `inn(str) or ogrn(str)` - ИНН или ОГРН контрагента.
+
+**Необязательные параметры** :
+- `user_settings(str)` - true если использовать пользовательские настройки. По умолчанию false
+
+
+**Метод** : `GET`
+
+**Формат ответа:**
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "additional_sum_value": {
+      "type": "number",
+      "description": "Сумма баллов по дополнительным аспектам"
+    },
+    "advantages_sum_value": {
+      "type": "number",
+      "description": "Суммарное значение положительных аспектов надежности"
+    },
+    "disadvantages_sum_value": {
+      "type": "number",
+      "description": "Суммарное значение отрицательных аспектов надежности"
+    },
+    "has_critical": {
+      "type": "boolean",
+      "description": "Признак наличия критически отрицательного аспекта"
+    },
+    "one_day_criteria": {
+      "type": "array",
+      "description": "Критерии одного дня",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Описание аспекта"
+            },
+            "links": {
+              "type": "array",
+              "description": "ссылки",
+              "items": [
+                {
+                  "type": "str"
+                }
+              ]
+            },
+            "value": {
+              "type": "number",
+              "description": "Значение аспекта"
+            }
+          }
+        }
+      ]
+    },
+    "advantages": {
+      "type": "object",
+      "description": "Список положительных аспектов влияющих на надежность",
+      "properties": {
+        "common": {
+          "type": "object",
+          "description": "Общие признаки",
+          "properties": {
+            "criteria": {
+              "type": "array",
+              "description": "критерии",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "comments": {
+                      "type": "array",
+                      "description": "комментарии",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Описание аспекта"
+                    },
+                    "links": {
+                      "type": "array",
+                      "description": "ссылки",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "number",
+                      "description": "Значение аспекта"
+                    }
+                  }
+                }
+              ]
+            },
+            "value": {
+              "type": "number",
+              "description": "Значение аспекта"
+            },
+            "description": {
+              "type": "string",
+              "description": "Описание аспекта"
+            }
+          }
+        },
+        "financial": {
+          "type": "object",
+          "description": "Финансовые признаки",
+          "properties": {
+            "criteria": {
+              "type": "array",
+              "description": "критерии",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "comments": {
+                      "type": "array",
+                      "description": "комментарии",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Описание аспекта"
+                    },
+                    "links": {
+                      "type": "array",
+                      "description": "ссылки",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "number",
+                      "description": "Значение аспекта"
+                    }
+                  }
+                }
+              ]
+            },
+            "value": {
+              "type": "number",
+              "description": "Значение аспекта"
+            },
+            "description": {
+              "type": "string",
+              "description": "Описание аспекта"
+            }
+          }
+        }
+      }
+    },
+    "disadvantages": {
+      "type": "object",
+      "description": "Список отрицательных аспектов влияющих на надежность",
+      "properties": {
+        "common": {
+          "type": "object",
+          "description": "Общие признаки",
+          "properties": {
+            "criteria": {
+              "type": "array",
+              "description": "критерии",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "comments": {
+                      "type": "array",
+                      "description": "комментарии",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Описание аспекта"
+                    },
+                    "links": {
+                      "type": "array",
+                      "description": "ссылки",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "number",
+                      "description": "Значение аспекта"
+                    }
+                  }
+                }
+              ]
+            },
+            "value": {
+              "type": "number",
+              "description": "Значение аспекта"
+            },
+            "description": {
+              "type": "string",
+              "description": "Описание аспекта"
+            }
+          }
+        },
+        "critical": {
+          "type": "object",
+          "description": "Критичные признаки",
+          "properties": {
+            "criteria": {
+              "type": "array",
+              "description": "критерии",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "comments": {
+                      "type": "array",
+                      "description": "комментарии",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Описание аспекта"
+                    },
+                    "links": {
+                      "type": "array",
+                      "description": "ссылки",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "number",
+                      "description": "Значение аспекта"
+                    }
+                  }
+                }
+              ]
+            },
+            "value": {
+              "type": "number",
+              "description": "Значение аспекта"
+            },
+            "description": {
+              "type": "string",
+              "description": "Описание аспекта"
+            }
+          }
+        },
+        "financial": {
+          "type": "object",
+          "description": "Финансовые признаки",
+          "properties": {
+            "criteria": {
+              "type": "array",
+              "description": "критерии",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "comments": {
+                      "type": "array",
+                      "description": "комментарии",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Описание аспекта"
+                    },
+                    "links": {
+                      "type": "array",
+                      "description": "ссылки",
+                      "items": [
+                        {
+                          "type": "str"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "type": "number",
+                      "description": "Значение аспекта"
+                    }
+                  }
+                }
+              ]
+            },
+            "value": {
+              "type": "number",
+              "description": "Значение аспекта"
+            },
+            "description": {
+              "type": "string",
+              "description": "Описание аспекта"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+**Пример ответа:**
+
+```json
+{
+  "additional_sum_value": 0,
+  "advantages": {
+    "common": {
+      "criteria": [
+        {
+          "comments": [
+            "Дата регистрации 01.01.18"
+          ],
+          "description": "5 лет компания работает на рынке",
+          "links": null,
+          "value": 7
+        },
+        {
+          "comments": null,
+          "description": "Более 50 филиалов в 3 регионах",
+          "links": null,
+          "value": 1
+        },
+        {
+          "comments": null,
+          "description": "Большой уставный капитал (350.0 тыс ₽)",
+          "links": null,
+          "value": 4
+        },
+        {
+          "comments": [
+            "Количество сотрудников 100 - 500 человек",
+            "Годовой доход 114.7 млрд ₽",
+            "Активы составляют 463.6 млрд ₽"
+          ],
+          "description": "Представитель крупного бизнеса",
+          "links": null,
+          "value": 10
+        },
+        {
+          "comments": null,
+          "description": "Имеет 4 товарных знака",
+          "links": null,
+          "value": 4
+        },
+        {
+          "comments": null,
+          "description": "Имеет 13 действующих лицензий и 6 действующих сертификатов",
+          "links": null,
+          "value": 3
+        },
+        {
+          "comments": null,
+          "description": "Является членом СРО",
+          "links": null,
+          "value": 2
+        }
+      ],
+      "description": "Общие моменты",
+      "value": 31
+    },
+    "financial": {
+      "criteria": [
+        {
+          "comments": [
+            "Оборотные активы превышают текущие долги на 211%"
+          ],
+          "description": "Компания способна расплатиться с текущими долгами",
+          "links": null,
+          "value": 2
+        },
+        {
+          "comments": null,
+          "description": "Риск задержки платежей низкий (10%)",
+          "links": null,
+          "value": 1
+        },
+        {
+          "comments": null,
+          "description": "Рентабельность (8.6%) выше среднеотраслевой (0%)",
+          "links": null,
+          "value": 3
+        },
+        {
+          "comments": null,
+          "description": "Компания владеет имуществом на сумму 547.8 млн ₽",
+          "links": null,
+          "value": 10
+        }
+      ],
+      "description": "Финансовое положение",
+      "value": 16
+    }
+  },
+  "advantages_sum_value": 47,
+  "disadvantages": {
+    "common": {
+      "criteria": [
+        {
+          "comments": [
+            "8 (4852) 00-01-01 109 компаний"
+          ],
+          "description": "Телефон более чем у 100 компаний",
+          "links": null,
+          "value": -7
+        }
+      ],
+      "description": "Общие моменты",
+      "value": -7
+    },
+    "critical": {
+      "criteria": [
+        {
+          "comments": [
+            "По данным исполнительного производства №59299003/23/01020-ИП от 01.01.23"
+          ],
+          "description": "Деятельность компании/филиала приостановлена",
+          "links": null,
+          "value": -2
+        },
+        {
+          "comments": [
+            "По данным исполнительного производства №59299012/23/01020-ИП от 01.01.23"
+          ],
+          "description": "На имущество компании наложен арест",
+          "links": null,
+          "value": -0.5
+        },
+        {
+          "comments": [
+            "По данным ФНС на 01.01.23"
+          ],
+          "description": "Компания не сдает налоговую отчетность",
+          "links": [
+            "https://service.nalog.ru/zd.do"
+          ],
+          "value": -7
+        },
+        {
+          "comments": [
+            "По данным ФНС на 01.01.23"
+          ],
+          "description": "Имеется задолженность по налогам",
+          "links": [
+            "https://service.nalog.ru/zd.do"
+          ],
+          "value": 0
+        },
+        {
+          "comments": [
+            "По данным исполнительного производства №59299013/23/01020-ИП от 01.01.23"
+          ],
+          "description": "Имеется задолженность по з/п",
+          "links": null,
+          "value": -1
+        },
+        {
+          "comments": [
+            "По данным исполнительного производства №59299014/23/01020-ИП от 01.01.23"
+          ],
+          "description": "Имеется задолженность по кредитным платежам",
+          "links": null,
+          "value": -1
+        },
+        {
+          "comments": [
+            "Тестовый Ю.Т. 151 компания"
+          ],
+          "description": "Учредитель в 100 и более компаниях",
+          "links": null,
+          "value": -100
+        }
+      ],
+      "description": "Критичные признаки",
+      "value": -111.5
+    },
+    "financial": {
+      "criteria": [
+        {
+          "comments": [
+            "Обязательства в балансе составляют 81%: в долгосрочной перспективе возможны перебои с оплатой"
+          ],
+          "description": "Риск потери независимости из-за имеющихся обязательств",
+          "links": null,
+          "value": -1
+        },
+        {
+          "comments": [
+            "Найден риск по 1 методике из 5"
+          ],
+          "description": "Вероятность банкротства",
+          "links": null,
+          "value": 0
+        },
+        {
+          "comments": null,
+          "description": "Продажи в 2022 снизились на 56.5% по сравнению с прошлым годом",
+          "links": null,
+          "value": -4
+        },
+        {
+          "comments": null,
+          "description": "Отсутствует возможность получения кредита",
+          "links": null,
+          "value": 0
+        }
+      ],
+      "description": "Финансовое положение",
+      "value": -5
+    }
+  },
+  "disadvantages_sum_value": -100,
+  "has_critical": true,
+  "one_day_criteria": [
+    {
+      "description": "Массовый учредитель",
+      "links": null,
+      "value": -100
+    },
+    {
+      "description": "Массовый телефон",
+      "links": null,
+      "value": -7
+    },
+    {
+      "description": "Компания не сдает налоговую отчетность",
+      "links": null,
       "value": -7
     }
   ]

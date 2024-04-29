@@ -136,6 +136,12 @@
 }
 ```
 
+**Пример запроса**
+
+```text
+https://api.sbis.ru/vok/pledges?inn=7712040126
+```
+
 **Пример ответа**
 
 ```json
@@ -304,4 +310,10 @@
 
 ```json
 file
+```
+
+**Пример запроса**
+
+```text
+https://api.sbis.ru/vok/pledges/file?inn=7712040126&file_id=100500
 ```

@@ -34,6 +34,12 @@
 }
 ```
 
+**Пример запроса**
+
+```text
+https://api.sbis.ru/vok/client/stat
+```
+
 **Пример ответа**
 
 ```json

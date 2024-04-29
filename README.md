@@ -74,7 +74,9 @@ https://sbis.ru/contragents_api_demo - интерфейс для демо сте
 
 **Методы**
 
-req, logo, registration-information - основные реквизиты контрагента [подробное описание](doc/req/README.md)
+req - основные реквизиты контрагента [подробное описание](doc/req/req.md)
+
+logo, registration-information - логотип и регистрационные данные контрагента [подробное описание](doc/req/README.md)
 
 tenders, tenders-info, customers, rivals - данные о торгах [подробное описание](doc/tenders/README.md)
 
@@ -84,11 +86,11 @@ subscriptions/(events, contractors, subscribe, unsubscribe) - данные о с
 
 pdf/(business-report, due-diligence-report, financial-report, signed-excerpt), xml/(egrul-excerpt, reporting-excerpt) -  [подробное описание](doc/pdf/README.md)
 
-finance, cost-business, reliability, market-position, creditworthiness - данные об аналитике [подробное описание](doc/finance/README.md)
+[finance](doc/finance/finance.md), [cost-business](doc/finance/cost-business.md), [reliability](doc/finance/reliability.md), [reliability/blocks](doc/finance/reliability_blocks.md), [market-position](doc/finance/market-position.md), [creditworthiness](doc/finance/creditworthiness.md) - данные об аналитике 
 
 statistic-courts, courts, executive-lists - данные о судах контрагента [подробное описание](doc/courts/README.md)
 
-bankruptcy, bankruptcy/file - данные о банкротстве контрагента [подробное описание](doc/bankruptcy/README.md)
+[bankruptcy](doc/bankruptcy/bankruptcy.md), [bankruptcy/file](doc/bankruptcy/bankruptcy_file.md) - данные о банкротстве контрагента
 
 fea - статистика о внешнеэкономической деятельности контрагента [подробное описание](doc/fea/README.md)
 

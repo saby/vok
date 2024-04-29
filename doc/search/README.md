@@ -58,7 +58,7 @@
 
 **Пример запроса**
 
-```json
+```text
 https://api.sbis.ru/vok-demo/search?requisites=Газпром%201027700070518
 ```
 

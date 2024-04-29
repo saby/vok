@@ -50,26 +50,134 @@
 }
 ```
 
-**Пример ответа**
+
+**Пример запроса**
+
+```text
+https://api.sbis.ru/vok/inspections/stat?inn=7712040126
+```
+
+**Пример ответа для базовой лицензии:**
 
 ```json
 [
   {
-    "control_authority_name": "Ростехнадзор",
+    "control_authority_name": "Ространснадзор",
     "year_data": {
-      "2021": 2
+      "2022": 4,
+      "2023": 23,
+      "2024": 12
     }
   },
   {
+    "control_authority_name": "Роструд",
+    "year_data": {
+      "2022": 7,
+      "2023": 9,
+      "2024": 8
+    }
+  },
+  {
+    "control_authority_name": "Роспотребнадзор",
+    "year_data": {
+      "2022": 4,
+      "2023": 19,
+      "2024": 7
+    }
+  },
+  {
+    "control_authority_name": "Росприроднадзор",
+    "year_data": {
+      "2022": null,
+      "2023": null,
+      "2024": 1
+    }
+  },
+  {
+    "control_authority_name": "МЧС",
+    "year_data": {
+      "2022": null,
+      "2023": null,
+      "2024": 1
+    }
+  }
+]
+```
+
+**Пример ответа для расширенной лицензии:**
+
+```json
+[
+  {
     "control_authority_name": "Ространснадзор",
     "year_data": {
-      "2021": 1
+      "2022": 4,
+      "2023": 23,
+      "2024": 12
+    }
+  },
+  {
+    "control_authority_name": "Роструд",
+    "year_data": {
+      "2022": 7,
+      "2023": 9,
+      "2024": 8
+    }
+  },
+  {
+    "control_authority_name": "Роспотребнадзор",
+    "year_data": {
+      "2022": 4,
+      "2023": 19,
+      "2024": 7
+    }
+  },
+  {
+    "control_authority_name": "Росприроднадзор",
+    "year_data": {
+      "2022": null,
+      "2023": null,
+      "2024": 1
+    }
+  },
+  {
+    "control_authority_name": "МЧС",
+    "year_data": {
+      "2022": null,
+      "2023": null,
+      "2024": 1
+    }
+  },
+  {
+    "control_authority_name": "ФНС",
+    "year_data": {
+      "2022": null,
+      "2023": 1,
+      "2024": null
+    }
+  },
+  {
+    "control_authority_name": "Администрация, Органы местного самоуправления",
+    "year_data": {
+      "2022": null,
+      "2023": 1,
+      "2024": null
+    }
+  },
+  {
+    "control_authority_name": "Прочие",
+    "year_data": {
+      "2022": 3,
+      "2023": null,
+      "2024": null
     }
   }
 ]
 ```
 
 ***
+
+##Данные по проверкам.
 
 Получить данные по проверкам.
 
@@ -279,62 +387,196 @@
 }
 ```
 
-**Пример ответа**
+
+**Пример запроса**
+
+```text
+https://api.sbis.ru/vok/inspections/data?inn=7712040126
+```
+
+**Пример ответа:**
 
 ```json
 [
   {
-    "region": "47008000396",
-    "activity_category": "3802000000",
-    "activity_code": "19.20",
-    "inspection_body_main": "Северо-Западное управление Федеральной службы по экологическому, технологическому  и атомному надзору",
-    "inspection_body_additional": "Управление Генеральной прокуратуры РФ в Северо-Западном ФО",
-    "inspection_objective": "с целью: контроля деятельности юридических лиц/индивидуальных предпринимателей по соблюдению требований законодательства о градостроительной деятельности, обязательных норм и правил при реконструкции объекта капитального строительства в соответствии с программой проверок от  02.12.2020 № б/н.\rЗадачами настоящей проверки являются:\r-осуществление контроля за соблюдением юридическими лицами (индивидуальными предпринимателями) требований законодательства о градостроительной деятельности, обязательных норм и правил;\r- предупреждение, выявление и пресечение допущенных нарушений законодательства о градостроительной деятельности, в том числе проектной документации.\r Предметом настоящей проверки является (отметить нужное): \rсоблюдение обязательных требований законодательства о градостроительной деятельности;\rсоответствие выполнения работ и применяемых строительных материалов в процессе строительства, реконструкции объекта капитального строительства, а также результатов таких работ требованиям утвержденной в соответствии с частями 15, 15.2 и 15.3 статьи 48 настоящего Кодекса проектной документации (с учетом изменений, внесенных в проектную документацию в соответствии с частями 3.8 и 3.9 статьи 49 настоящего Кодекса) и (или) информационной модели (в случае, если формирование и ведение информационной модели являются обязательными в соответствии с требованиями настоящего Кодекса), в том числе требованиям энергетической эффективности (за исключением объектов капитального строительства, на которые требования энергетической эффективности не распространяются) и требованиям оснащенности объекта капитального строительства приборами учета используемых энергетических ресурсов;\rналичие разрешения на строительство;\rвыполнение лицами, осуществляющими строительство, требований частей 2,  3 и 3.1  статьи  52 Градостроительного кодекса РФ;",
-    "inspection_objective_other": "Иные основания в соответствии с федеральным законом.",
-    "type": "Внеплановая",
-    "form": null,
-    "date_check": "2021-01-27",
-    "duration": "20 раб.дн., 160 раб.ч.",
-    "status": "Завершено",
-    "inspection_address": "Ленинградская область, Кингисеппский муниципальный район, Вистинское сельское поселение, Морской торговый порт Усть-Луга (Вис) территория, Комплекс по перевалке и фракционированию стабильного газового конденсата и продуктов его переработки территория, уч. 1, уч. 2. Ленинградская область, Кингисеппский муниципальный район, Вистинское сельское поселение, земельный участок расположен в центральной части кадастрового квартала (Морской торговый порт Усть-Луга.",
+    "date_check": "2024-11-21",
+    "region": "77",
+    "activity_category": "3502000000",
+    "activity_code": "51.10.1",
+    "inspection_body_main": "ГЛАВНОЕ УПРАВЛЕНИЕ МИНИСТЕРСТВА РОССИЙСКОЙ ФЕДЕРАЦИИ ПО ДЕЛАМ ГРАЖДАНСКОЙ ОБОРОНЫ, ЧРЕЗВЫЧАЙНЫМ СИТУАЦИЯМ И ЛИКВИДАЦИИ ПОСЛЕДСТВИЙ СТИХИЙНЫХ БЕДСТВИЙ ПО МОСКОВСКОЙ ОБЛАСТИ",
+    "inspection_body_additional": "Федеральный государственный пожарный надзор",
+    "inspection_objective": null,
+    "inspection_objective_other": null,
+    "type": "Плановая",
+    "form": "Выездная",
+    "duration": "13 раб.дн., 0 раб.ч.",
+    "status": "Ожидает проведения",
+    "inspection_address": null,
     "last_inspection_date": null,
-    "number": "002105313550",
-    "act_number": "16-1387-104/РК",
-    "act_date": "2021-01-14",
-    "is_scheduled": false,
-    "is_field_audit": null,
+    "number": "50240061000207655571",
+    "act_number": null,
+    "act_date": null,
+    "is_scheduled": true,
+    "is_field_audit": true,
     "is_documentary_audit": null,
-    "rawdata_link": "https://proverki.gov.ru/",
-    "inspection_result.act_datetime": "2021-02-24 22:45:00",
-    "inspection_result.act_place": "191028, г. Санкт-Петербург, ул. Моховая, д 30, квартира 18",
-    "inspection_result.inspectors": "Добровольская Марина Александровна - Проверяющий, Кузьменко Дмитрий Валерьевич - Проверяющий, Петухов Владимир Степанович - Проверяющий, Енаев Тимур Халимович - Проверяющий, Цыганова Светлана Алексеевна - Проверяющий",
+    "url": "https://proverki.gov.ru/",
+    "inspection_result.act_datetime": null,
+    "inspection_result.act_place": null,
+    "inspection_result.inspectors": null,
     "inspection_result.authorised_representative": null,
-    "inspection_result.has_violation": true,
+    "inspection_result.has_violation": false,
     "inspection_result.is_canceled": false,
     "inspection_result.cancel_reason": null,
-    "inspection_result.injunctions_total": 1,
-    "inspection_result.injunctions_current": 0,
-    "ctid": "(128132,6)",
-    "ctid_inspection_result": "(246045,14)",
-    "inspection_result.injunctions_executed": true,
-    "inspection_result.result_published": true,
-    "violations_data": [
-      {
-        "violation_desc": "нарушение требований проектной документации",
-        "violation_act": "раздел 6 «Проект организации строительства»,Проектная документация   раздел 4.1 «Конструктивные и объемно-планировочные решения»  часть 2",
-        "violation_responsible": null,
-        "injunction_details": "№16-1387-104-337/ПР-19",
-        "injunction_content": "устранить нарушения",
-        "injunction_date": "2021-02-24",
-        "injunction_deadline": "2021-05-24",
-        "injunction_execution_date": null,
-        "injunction_executed": true,
-        "ctid": "(11122,5)"
-      }
-    ]
+    "inspection_result.injunctions_total": null,
+    "inspection_result.injunctions_current": null,
+    "inspection_result.injunctions_executed": null,
+    "inspection_result.result_published": false,
+    "violations_data": null
+  },
+  {
+    "date_check": "2024-04-26",
+    "region": "77",
+    "activity_category": "3502000000",
+    "activity_code": "51.10.1",
+    "inspection_body_main": "ГОСУДАРСТВЕННАЯ ИНСПЕКЦИЯ ТРУДА В ГОРОДЕ МОСКВЕ",
+    "inspection_body_additional": "Федеральный государственный контроль (надзор) за соблюдением трудового законодательства и иных нормативных правовых актов, содержащих нормы трудового права",
+    "inspection_objective": null,
+    "inspection_objective_other": null,
+    "type": null,
+    "form": "Документарная",
+    "duration": null,
+    "status": "Предостережение объявлено",
+    "inspection_address": null,
+    "last_inspection_date": null,
+    "number": "77241373165510417385",
+    "act_number": null,
+    "act_date": null,
+    "is_scheduled": null,
+    "is_field_audit": null,
+    "is_documentary_audit": true,
+    "url": "https://proverki.gov.ru/",
+    "inspection_result.act_datetime": null,
+    "inspection_result.act_place": null,
+    "inspection_result.inspectors": null,
+    "inspection_result.authorised_representative": null,
+    "inspection_result.has_violation": false,
+    "inspection_result.is_canceled": false,
+    "inspection_result.cancel_reason": null,
+    "inspection_result.injunctions_total": null,
+    "inspection_result.injunctions_current": null,
+    "inspection_result.injunctions_executed": null,
+    "inspection_result.result_published": false,
+    "violations_data": null
+  },
+  {
+    "date_check": "2024-04-18",
+    "region": "77",
+    "activity_category": "3502000000",
+    "activity_code": "51.10.1",
+    "inspection_body_main": "Управление Роспотребнадзора по Московской области",
+    "inspection_body_additional": "Федеральный государственный контроль (надзор) в области защиты прав потребителей",
+    "inspection_objective": null,
+    "inspection_objective_other": null,
+    "type": null,
+    "form": "Документарная",
+    "duration": null,
+    "status": "Предостережение объявлено",
+    "inspection_address": null,
+    "last_inspection_date": null,
+    "number": "50240791000110322570",
+    "act_number": null,
+    "act_date": null,
+    "is_scheduled": null,
+    "is_field_audit": null,
+    "is_documentary_audit": true,
+    "url": "https://proverki.gov.ru/",
+    "inspection_result.act_datetime": null,
+    "inspection_result.act_place": null,
+    "inspection_result.inspectors": null,
+    "inspection_result.authorised_representative": null,
+    "inspection_result.has_violation": false,
+    "inspection_result.is_canceled": false,
+    "inspection_result.cancel_reason": null,
+    "inspection_result.injunctions_total": null,
+    "inspection_result.injunctions_current": null,
+    "inspection_result.injunctions_executed": null,
+    "inspection_result.result_published": false,
+    "violations_data": null
+  },
+  {
+    "date_check": "2024-04-16",
+    "region": "77",
+    "activity_category": "3502000000",
+    "activity_code": "51.10.1",
+    "inspection_body_main": "МЕЖРЕГИОНАЛЬНОЕ ТЕРРИТОРИАЛЬНОЕ УПРАВЛЕНИЕ ФЕДЕРАЛЬНОЙ СЛУЖБЫ ПО НАДЗОРУ В СФЕРЕ ТРАНСПОРТА ПО СИБИРСКОМУ ФЕДЕРАЛЬНОМУ ОКРУГУ",
+    "inspection_body_additional": "Федеральный государственный контроль (надзор) в области гражданской авиации",
+    "inspection_objective": null,
+    "inspection_objective_other": null,
+    "type": null,
+    "form": "Документарная",
+    "duration": null,
+    "status": "Предостережение объявлено",
+    "inspection_address": null,
+    "last_inspection_date": null,
+    "number": "54240814274310277283",
+    "act_number": null,
+    "act_date": null,
+    "is_scheduled": null,
+    "is_field_audit": null,
+    "is_documentary_audit": true,
+    "url": "https://proverki.gov.ru/",
+    "inspection_result.act_datetime": null,
+    "inspection_result.act_place": null,
+    "inspection_result.inspectors": null,
+    "inspection_result.authorised_representative": null,
+    "inspection_result.has_violation": false,
+    "inspection_result.is_canceled": false,
+    "inspection_result.cancel_reason": null,
+    "inspection_result.injunctions_total": null,
+    "inspection_result.injunctions_current": null,
+    "inspection_result.injunctions_executed": null,
+    "inspection_result.result_published": false,
+    "violations_data": null
+  },
+  {
+    "date_check": "2024-04-12",
+    "region": "77",
+    "activity_category": "3502000000",
+    "activity_code": "51.10.1",
+    "inspection_body_main": "Управление Роспотребнадзора по Красноярскому краю",
+    "inspection_body_additional": "Федеральный государственный контроль (надзор) в области защиты прав потребителей",
+    "inspection_objective": null,
+    "inspection_objective_other": null,
+    "type": null,
+    "form": "Документарная",
+    "duration": null,
+    "status": "Предостережение объявлено",
+    "inspection_address": null,
+    "last_inspection_date": null,
+    "number": "24240791000110240593",
+    "act_number": null,
+    "act_date": null,
+    "is_scheduled": null,
+    "is_field_audit": null,
+    "is_documentary_audit": true,
+    "url": "https://proverki.gov.ru/",
+    "inspection_result.act_datetime": null,
+    "inspection_result.act_place": null,
+    "inspection_result.inspectors": null,
+    "inspection_result.authorised_representative": null,
+    "inspection_result.has_violation": false,
+    "inspection_result.is_canceled": false,
+    "inspection_result.cancel_reason": null,
+    "inspection_result.injunctions_total": null,
+    "inspection_result.injunctions_current": null,
+    "inspection_result.injunctions_executed": null,
+    "inspection_result.result_published": false,
+    "violations_data": null
   }
 ]
 ```
+
+
 ***
 **Весь список control_authorities** :
 

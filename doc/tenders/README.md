@@ -121,6 +121,10 @@
       "type": "number",
       "description": "цена торга"
     },
+    "currency_brief": {
+      "type": "str",
+      "description": "символьный код валюты"
+    },
     "endofferdate": {
       "type": "str",
       "description": "дата окончания торга"

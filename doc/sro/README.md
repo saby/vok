@@ -377,53 +377,66 @@
 }
 ```
 
-**Пример ответа**
+
+**Пример запроса**
+
+```text
+https://api.sbis.ru/vok/sro?inn=1644003838
+```
+
+**Пример ответа для базовой лицензии:**
+
+```json
+[
+  [
+    {
+      "sro_name": "Содружество Строителей РТ, АСРО",
+      "region": "Татарстан",
+      "activity": "Строительство",
+      "date_begin": "2009-07-03",
+      "date_end": null
+    },
+    {
+      "sro_name": "Ассоциация СРО \"ВКИ\", Ассоциация (союз)",
+      "region": "Татарстан",
+      "activity": "Изыскания",
+      "date_begin": "2010-02-15",
+      "date_end": null
+    },
+    {
+      "sro_name": "СРО Союз \"Волга-Кама\", СО",
+      "region": "Татарстан",
+      "activity": "Проектирование",
+      "date_begin": "2010-01-27",
+      "date_end": null
+    }
+  ]
+]
+```
+
+**Пример ответа для расширенной лицензии:**
 
 ```json
 [
   {
-    "date_begin": "2017-06-27",
+    "date_begin": "2009-07-03",
     "date_end": null,
-    "activity": "Проектирование",
+    "activity": "Строительство",
     "allowances_count": 0,
-    "active_insurance_policies_count": 5,
+    "active_insurance_policies_count": 0,
     "inactive_insurance_policies_count": 0,
-    "inspection_count": 2,
-    "active_certificates_admission_count": 1,
+    "inspection_count": 8,
+    "active_certificates_admission_count": 0,
     "inactive_certificates_admission_count": 0,
     "contributions_count": 2,
     "documents_cnt": 0,
-    "termination_reason": "",
-    "url": "https://reestr.nopriz.ru/reestr?m.ogrnip=1074707002457",
-    "allowances": [
-      "Работы по подготовке технологических решений",
-      "Работы по подготовке технологических решений объектов нефтегазового назначения и их комплексов"
-    ],
-    "insurances": [
-      {
-        "date_begin": null,
-        "date_end": null,
-        "name": null,
-        "number": null,
-        "type": "Страхование гражданской ответственности",
-        "amount": "10000000.00",
-        "insurer_name": "СОГАЗ, ОАО, НАО",
-        "license_number": "СИ № 1208 от 05.08.2015 г"
-      },
-      {
-        "date_begin": null,
-        "date_end": null,
-        "name": null,
-        "number": null,
-        "type": "Страхование гражданской ответственности",
-        "amount": "10000000.00",
-        "insurer_name": "СОГАЗ, ОАО, НАО",
-        "license_number": "СИ № 1208 от 05.08.2015 г"
-      }
-    ],
+    "termination_reason": null,
+    "url": "http://reestr.nostroy.ru/member/4609760",
+    "allowances": [],
+    "insurances": [],
     "inspections": [
       {
-        "date": "2019-09-24",
+        "date": "2018-06-10",
         "type": "Плановая",
         "result": false,
         "comment": null,
@@ -431,7 +444,7 @@
         "troubleshooting": null
       },
       {
-        "date": "2018-07-19",
+        "date": "2017-05-05",
         "type": "Плановая",
         "result": false,
         "comment": null,
@@ -439,33 +452,21 @@
         "troubleshooting": null
       }
     ],
-    "certificates": [
-      {
-        "date": "2017-06-27",
-        "name": null,
-        "number": "ИП-276-942",
-        "protocol": "Протокол заседания Совета № П-08/2017 от 27.06.2017",
-        "limit": {
-          "limit_str": "не превышает двадцать пять миллионов рублей",
-          "sign": "<",
-          "value": 25000000
-        }
-      }
-    ],
+    "certificates": [],
     "rights": {
       "name": null,
-      "date": "2017-06-27",
+      "date": null,
       "status": true,
       "justification": null,
-      "justification_number": "Протокол заседания Совета № П-08/2017 от 27.06.2017",
-      "justification_date": "2017-06-27",
+      "justification_number": "Протокол КО №214 от 03.07.2017",
+      "justification_date": null,
       "subjects": [
         {
-          "title": "Особо опасных, технически сложных и уникальных объектов капитального строительства (кроме объектов использования атомной энергии)",
+          "title": "Объектов капитального строительства (кроме особо опасных, технически сложных и уникальных объектов, объектов использования атомной энергии)",
           "status": true
         },
         {
-          "title": "Объектов капитального строительства (кроме особо опасных, технически сложных и уникальных объектов, объектов использования атомной энергии)",
+          "title": "Особо опасных, технически сложных и уникальных объектов капитального строительства (кроме объектов использования атомной энергии)",
           "status": true
         },
         {
@@ -479,7 +480,10 @@
             "name": "Размер обязательств",
             "text": "по договорам подряда с использованием конкурентных способов заключения договоров"
           },
-          "status": {}
+          "status": {
+            "sign": "<",
+            "value": 10000000000
+          }
         },
         {
           "title": {
@@ -487,32 +491,257 @@
             "text": "по одному договору подряда"
           },
           "status": {
-            "sign": "≥",
-            "value": 300000000
+            "sign": "<",
+            "value": 10000000000
           }
         }
       ]
     },
     "contributions": [
       {
-        "description": "Размер взноса в компенсационный фонд возмещения вреда составляет",
+        "description": "Размер взноса в компенсационный фонд возмещения вреда:",
         "limit": null,
         "right": null,
         "responsibility": null,
-        "amount": 1000000
+        "amount": 2000000
       },
       {
-        "description": "Размер взноса в компенсационный фонд обеспечения договорных обязательств составляет",
+        "description": "Размер взноса в компенсационный фонд обеспечения договорных обязательств:",
         "limit": null,
         "right": null,
         "responsibility": null,
-        "amount": 0
+        "amount": 12714000
       }
     ],
     "company_in_sro": true,
     "sro_active": true,
-    "region": "Москва",
-    "sro_name": "Инженер-Проектировщик, НП"
+    "sro_name": "Содружество Строителей РТ, АСРО",
+    "region": "Татарстан",
+    "files_id": []
+  },
+  {
+    "date_begin": "2010-02-15",
+    "date_end": null,
+    "activity": "Изыскания",
+    "allowances_count": 0,
+    "active_insurance_policies_count": 0,
+    "inactive_insurance_policies_count": 8,
+    "inspection_count": 10,
+    "active_certificates_admission_count": 0,
+    "inactive_certificates_admission_count": 0,
+    "contributions_count": 2,
+    "documents_cnt": 0,
+    "termination_reason": null,
+    "url": "https://reestr.nopriz.ru/member/18879861",
+    "allowances": [],
+    "insurances": [
+      {
+        "date_begin": "2017-05-18",
+        "date_end": "2017-05-19",
+        "name": null,
+        "number": "1578/12-0000002",
+        "type": "Страхование гражданской ответственности",
+        "amount": 1000000,
+        "insurer_name": "АО СК \"Чулпан\" Бугульминский филиал",
+        "license_number": "С 1216 16"
+      }
+    ],
+    "inspections": [
+      {
+        "date": "2023-04-13",
+        "type": "Плановая",
+        "result": true,
+        "comment": null,
+        "action": false,
+        "troubleshooting": null
+      },
+      {
+        "date": "2021-10-26",
+        "type": "Плановая",
+        "result": false,
+        "comment": null,
+        "action": false,
+        "troubleshooting": null
+      }
+    ],
+    "certificates": [],
+    "rights": {
+      "name": null,
+      "date": "2010-02-15",
+      "status": true,
+      "justification": null,
+      "justification_number": "б/н от 15.02.2010г.",
+      "justification_date": "2010-02-15",
+      "subjects": [
+        {
+          "title": "Объектов капитального строительства (кроме особо опасных, технически сложных и уникальных объектов, объектов использования атомной энергии)",
+          "status": true
+        },
+        {
+          "title": "Особо опасных, технически сложных и уникальных объектов капитального строительства (кроме объектов использования атомной энергии)",
+          "status": true
+        },
+        {
+          "title": "Объектов использования атомной энергии",
+          "status": false
+        }
+      ],
+      "limitations": [
+        {
+          "title": {
+            "name": "Размер обязательств",
+            "text": "по договорам подряда с использованием конкурентных способов заключения договоров"
+          },
+          "status": {
+            "sign": "<",
+            "value": 50000000
+          }
+        },
+        {
+          "title": {
+            "name": "Стоимость работ",
+            "text": "по одному договору подряда"
+          },
+          "status": {
+            "sign": "<",
+            "value": 50000000
+          }
+        }
+      ]
+    },
+    "contributions": [
+      {
+        "description": "Размер взноса в компенсационный фонд возмещения вреда:",
+        "limit": null,
+        "right": null,
+        "responsibility": null,
+        "amount": 150000
+      },
+      {
+        "description": "Размер взноса в компенсационный фонд обеспечения договорных обязательств:",
+        "limit": null,
+        "right": null,
+        "responsibility": null,
+        "amount": 350000
+      }
+    ],
+    "company_in_sro": true,
+    "sro_active": true,
+    "sro_name": "Ассоциация СРО \"ВКИ\", Ассоциация (союз)",
+    "region": "Татарстан",
+    "files_id": []
+  },
+  {
+    "date_begin": "2010-01-27",
+    "date_end": null,
+    "activity": "Проектирование",
+    "allowances_count": 0,
+    "active_insurance_policies_count": 0,
+    "inactive_insurance_policies_count": 15,
+    "inspection_count": 10,
+    "active_certificates_admission_count": 0,
+    "inactive_certificates_admission_count": 0,
+    "contributions_count": 2,
+    "documents_cnt": 0,
+    "termination_reason": null,
+    "url": "https://reestr.nopriz.ru/member/18745746",
+    "allowances": [],
+    "insurances": [
+      {
+        "date_begin": "2016-12-24",
+        "date_end": "2017-12-25",
+        "name": null,
+        "number": "10-16",
+        "type": null,
+        "amount": 16000000,
+        "insurer_name": "СК \" Чулпан\", АО",
+        "license_number": "С №1216 16 ФССН РФ 04.10.2006г."
+      }
+    ],
+    "inspections": [
+      {
+        "date": "2023-09-04",
+        "type": "Плановая",
+        "result": true,
+        "comment": null,
+        "action": false,
+        "troubleshooting": null
+      },
+      {
+        "date": "2022-03-29",
+        "type": "Плановая",
+        "result": false,
+        "comment": null,
+        "action": false,
+        "troubleshooting": null
+      }
+    ],
+    "certificates": [],
+    "rights": {
+      "name": null,
+      "date": "2010-01-27",
+      "status": true,
+      "justification": null,
+      "justification_number": "Протокол Коллегии №2 от 03.11.2009г.",
+      "justification_date": "2010-01-27",
+      "subjects": [
+        {
+          "title": "Объектов капитального строительства (кроме особо опасных, технически сложных и уникальных объектов, объектов использования атомной энергии)",
+          "status": true
+        },
+        {
+          "title": "Особо опасных, технически сложных и уникальных объектов капитального строительства (кроме объектов использования атомной энергии)",
+          "status": true
+        },
+        {
+          "title": "Объектов использования атомной энергии",
+          "status": false
+        }
+      ],
+      "limitations": [
+        {
+          "title": {
+            "name": "Размер обязательств",
+            "text": "по договорам подряда с использованием конкурентных способов заключения договоров"
+          },
+          "status": {
+            "sign": "<",
+            "value": 50000000
+          }
+        },
+        {
+          "title": {
+            "name": "Стоимость работ",
+            "text": "по одному договору подряда"
+          },
+          "status": {
+            "sign": "<",
+            "value": 50000000
+          }
+        }
+      ]
+    },
+    "contributions": [
+      {
+        "description": "Размер взноса в компенсационный фонд возмещения вреда:",
+        "limit": null,
+        "right": null,
+        "responsibility": null,
+        "amount": 150000
+      },
+      {
+        "description": "Размер взноса в компенсационный фонд обеспечения договорных обязательств:",
+        "limit": null,
+        "right": null,
+        "responsibility": null,
+        "amount": 350000
+      }
+    ],
+    "company_in_sro": true,
+    "sro_active": true,
+    "sro_name": "СРО Союз \"Волга-Кама\", СО",
+    "region": "Татарстан",
+    "files_id": []
   }
 ]
 ```
@@ -540,4 +769,10 @@
 
 ```json
 file
+```
+
+**Пример запроса**
+
+```text
+https://api.sbis.ru/vok/sro/file?inn=1644003838&file_id=100500
 ```

@@ -1,13 +1,13 @@
 ## Данные об аналитике 
 
-[finance](doc/finance/finance.md)
+[finance](inance.md)
 
-[cost-business](doc/finance/cost-business.md)
+[cost-business](cost-business.md)
 
-[reliability](doc/finance/reliability.md)
+[reliability](reliability.md)
 
-[reliability/blocks](doc/finance/reliability_blocks.md)
+[reliability/blocks](reliability_blocks.md)
 
-[market-position](doc/finance/market-position.md)
+[market-position](market-position.md)
 
-[creditworthiness](doc/finance/creditworthiness.md)
+[creditworthiness](creditworthiness.md)

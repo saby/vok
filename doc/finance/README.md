@@ -2,12 +2,12 @@
 
 [finance](./finance.md)
 
-[cost-business](cost-business.md)
+[cost-business](./cost-business.md)
 
-[reliability](reliability.md)
+[reliability](./reliability.md)
 
-[reliability/blocks](reliability_blocks.md)
+[reliability/blocks](./reliability_blocks.md)
 
-[market-position](market-position.md)
+[market-position](./market-position.md)
 
-[creditworthiness](creditworthiness.md)
+[creditworthiness](./creditworthiness.md)

@@ -1,6 +1,6 @@
 ## Данные об аналитике 
 
-[finance](inance.md)
+[finance](./inance.md)
 
 [cost-business](cost-business.md)
 

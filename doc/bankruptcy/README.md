@@ -1,5 +1,5 @@
 ## Данные о банкротстве контрагента
 
-[bankruptcy](doc/bankruptcy/bankruptcy.md)
+[bankruptcy](./bankruptcy.md)
 
-[bankruptcy/file](doc/bankruptcy/bankruptcy_file.md)
+[bankruptcy/file](./bankruptcy_file.md)

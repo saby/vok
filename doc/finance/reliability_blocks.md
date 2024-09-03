@@ -338,18 +338,18 @@
 
 **Пример запроса**
 ```text
-https://api.sbis.ru/vok/reliability/blocks/?inn=7712040126
+https://api.sbis.ru/vok/reliability/blocks/?inn=7810349385
 ```
 
 **Пример ответа для базовой лицензии:**
 
 ```json
 {
-  "additional_sum_value": 50,
+  "additional_sum_value": 0,
   "advantages": [],
-  "advantages_sum_value": 94,
+  "advantages_sum_value": 71,
   "disadvantages": [],
-  "disadvantages_sum_value": -21,
+  "disadvantages_sum_value": -3,
   "has_critical": false
 }
 ```
@@ -358,132 +358,267 @@ https://api.sbis.ru/vok/reliability/blocks/?inn=7712040126
 
 ```json
 {
-  "additional_sum_value": 50,
-  "advantages": {
-    "common": {
-      "criteria": [
-        {
-          "comments": [
-            "Дата регистрации 21.06.94"
-          ],
-          "description": "29 лет компания работает на рынке",
-          "links": null,
-          "value": 7
-        },
-        {
-          "comments": null,
-          "description": "Более 10 филиалов в 38 регионах",
-          "links": null,
-          "value": 1
-        },
-        {
-          "comments": null,
-          "description": "Большой уставный капитал (3975.8 млн ₽)",
-          "links": null,
-          "value": 4
-        },
-        {
-          "comments": [
-            "Количество сотрудников 10 000 - 50 000 человек",
-            "Годовой доход 427.8 млрд ₽",
-            "Активы составляют 262.9 млрд ₽"
-          ],
-          "description": "Представитель крупного бизнеса",
-          "links": null,
-          "value": 10
-        },
-        {
-          "comments": null,
-          "description": "Имеет 102 товарных знака",
-          "links": null,
-          "value": 4
-        },
-        {
-          "comments": null,
-          "description": "Имеет 9 действующих лицензий",
-          "links": null,
-          "value": 3
-        },
-        {
-          "comments": null,
-          "description": "Является членом СРО",
-          "links": null,
-          "value": 2
-        },
-        {
-          "comments": null,
-          "description": "Компания ищет новых сотрудников",
-          "links": null,
-          "value": 3
-        }
+  "additional_sum_value": 0,
+  "advantages": [
+    {
+      "comments": [
+        "Признак отсутствует"
       ],
-      "description": "Общие моменты",
-      "value": 34
+      "description": "Деятельность компании/филиала приостановлена",
+      "links": null,
+      "value": 1
     },
-    "critical": {
-      "criteria": [
-        {
-          "comments": null,
-          "description": "Задолженность по налогам, з/п и кредитным платежам не обнаружена",
-          "links": null,
-          "value": 0
-        }
+    {
+      "comments": [
+        "Признак отсутствует"
       ],
-      "description": "Критичные признаки",
-      "value": null
+      "description": "Операции по банковским счетам приостановлены",
+      "links": null,
+      "value": 1
     },
-    "financial": {
-      "criteria": [
-        {
-          "comments": null,
-          "description": "Компания владеет имуществом на сумму 14.0 млрд ₽",
-          "links": null,
-          "value": 10
-        }
+    {
+      "comments": [
+        "Признак отсутствует"
       ],
-      "description": "Финансовое положение",
-      "value": 10
+      "description": "Компания не отвечает на требования налоговой",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Компания не сдает налоговую отчетность",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Дисквалифицированные лица в руководстве",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Перевод компании на массового руководителя",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Массовый руководитель",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Массовый учредитель",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Массовый адрес",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": null,
+      "description": "Компания владеет имуществом на сумму 27.8 млн ₽",
+      "links": null,
+      "value": 5
+    },
+    {
+      "comments": null,
+      "description": "Чистые активы больше Уставного капитала",
+      "links": [
+        "755.0 млн ₽ больше 500.0 тыс ₽"
+      ],
+      "value": 3
+    },
+    {
+      "comments": null,
+      "description": "Продажи в 2023 выросли на 100% по сравнению с прошлым годом",
+      "links": null,
+      "value": 3
+    },
+    {
+      "comments": null,
+      "description": "Получена прибыль",
+      "links": null,
+      "value": 3
+    },
+    {
+      "comments": [
+        "Оборотные активы превышают текущие долги на 118.6%"
+      ],
+      "description": "Компания способна расплатиться с текущими долгами",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": null,
+      "description": "Риск задержки платежей низкий (10%)",
+      "links": null,
+      "value": 2
+    },
+    {
+      "comments": [
+        "Найден риск по 1 методике из 5"
+      ],
+      "description": "Вероятность банкротства",
+      "links": null,
+      "value": 0
+    },
+    {
+      "comments": [
+        "Максимальная сумма кредита 13.3 млрд ₽"
+      ],
+      "description": "Возможность получения кредита",
+      "links": null,
+      "value": 2
+    },
+    {
+      "comments": null,
+      "description": "Дел о банкротстве не обнаружено",
+      "links": null,
+      "value": 5
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Существенная сумма судебных дел, в которых компания – ответчик",
+      "links": null,
+      "value": 2
+    },
+    {
+      "comments": null,
+      "description": "Арест имущества не обнаружен",
+      "links": null,
+      "value": 2
+    },
+    {
+      "comments": null,
+      "description": "Не найдены решения об обращении взыскания на заложенное имущество",
+      "links": null,
+      "value": 2
+    },
+    {
+      "comments": null,
+      "description": "Отсутствие задолженности по налогам",
+      "links": null,
+      "value": 2
+    },
+    {
+      "comments": null,
+      "description": "Отсутствие задолженности по заработной плате",
+      "links": null,
+      "value": 2
+    },
+    {
+      "comments": null,
+      "description": "Отсутствие задолженности при обслуживании кредита",
+      "links": null,
+      "value": 2
+    },
+    {
+      "comments": null,
+      "description": "Дел о банкротстве аффилированных компаний не обнаружено",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Миграция между налоговыми органами",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Частая смена руководителя",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Дата регистрации 24.04.15"
+      ],
+      "description": "9 лет компания работает на рынке",
+      "links": null,
+      "value": 3
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Массовый телефон",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": null,
+      "description": "Большой уставный капитал (500.0 тыс ₽)",
+      "links": null,
+      "value": 7
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Недобросовестный поставщик",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Нет признаков оплаты труда",
+      "links": null,
+      "value": 1
+    },
+    {
+      "comments": [
+        "Признак отсутствует"
+      ],
+      "description": "Нет сотрудников",
+      "links": null,
+      "value": 1
     }
-  },
-  "advantages_sum_value": 94,
-  "disadvantages": {
-    "critical": {
-      "criteria": [
-        {
-          "comments": null,
-          "description": "Отсутствует свежая бухгалтерская отчетность по данным ГИР БО (ФНС)",
-          "links": null,
-          "value": -20
-        }
-      ],
-      "description": "Критичные признаки",
-      "value": -20
+  ],
+  "advantages_sum_value": 71,
+  "disadvantages": [
+    {
+      "comments": null,
+      "description": "Рентабельность (-0.3%) ниже среднеотраслевой (10.1%)",
+      "links": null,
+      "value": -2
     },
-    "financial": {
-      "criteria": [
-        {
-          "comments": [
-            "1266.0 тыс ₽"
-          ],
-          "description": "Существенная сумма задолженности по исполнительным листам",
-          "links": null,
-          "value": -0.5
-        },
-        {
-          "comments": [
-            "93.2 млн ₽"
-          ],
-          "description": "Существенная сумма судебных дел, в которых компания – ответчик",
-          "links": null,
-          "value": -0.5
-        }
+    {
+      "comments": [
+        "Обязательства в балансе составляют 88.1%: в долгосрочной перспективе возможны перебои с оплатой"
       ],
-      "description": "Финансовое положение",
+      "description": "Риск потери независимости из-за имеющихся обязательств",
+      "links": null,
       "value": -1
     }
-  },
-  "disadvantages_sum_value": -21,
-  "has_critical": false,
-  "one_day_criteria": []
+  ],
+  "disadvantages_sum_value": -3,
+  "has_critical": false
 }
 ```

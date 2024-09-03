@@ -107,7 +107,7 @@
 
 **Пример запроса**
 ```text
-https://api.sbis.ru/vok/reliability?inn=7712040126
+https://api.sbis.ru/vok/reliability?inn=7810349385
 ```
 
 
@@ -115,11 +115,11 @@ https://api.sbis.ru/vok/reliability?inn=7712040126
 
 ```json
 {
-  "additional_sum_value": 50,
+  "additional_sum_value": 0,
   "advantages": [],
-  "advantages_sum_value": 94,
+  "advantages_sum_value": 71,
   "disadvantages": [],
-  "disadvantages_sum_value": -21,
+  "disadvantages_sum_value": -3,
   "has_critical": false
 }
 ```

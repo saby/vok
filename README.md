@@ -31,7 +31,7 @@ https://sbis.ru/contragents_api_demo - интерфейс для демо сте
 
 **Авторизация**
 
-Подробно об авторизации - [https://sbis.ru/help/integration/api/auth](https://sbis.ru/help/integration/api/auth). Интерисующие пункты: "Добавить приложение" и "Настроить сервисную авторизацию".
+Подробно об авторизации - [https://sbis.ru/help/integration/api/auth](https://sbis.ru/help/integration/api/auth). Интересующие пункты: "Добавить приложение" и "Настроить сервисную авторизацию".
 
 **Запрос**
 

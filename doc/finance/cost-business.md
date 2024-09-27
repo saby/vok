@@ -131,11 +131,11 @@
           "description": "Вид деятельности контрагента"
         },
         "revenue": {
-          "type": "number",
+          "type": "float",
           "description": "Выручка"
         },
         "cost": {
-          "type": "number",
+          "type": "float",
           "description": "Стоимость"
         },
         "trades_intersections": {

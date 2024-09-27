@@ -205,11 +205,11 @@
         },
         "revenue": {
           "description": "выручка ЮЛ",
-          "type": "string"
+          "type": "float"
         },
         "cost": {
           "description": "стоимость ЮЛ",
-          "type": "string"
+          "type": "float"
         },
         "region": {
           "description": "регион ЮЛ",

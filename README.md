@@ -119,3 +119,5 @@ client/stat - Статистика запросов клиента [подроб
 pledges, pledges/file - Залог/Лизинг [подробное описание](doc/pledges/README.md)
 
 vehicle, vehicle/stat - Автотранспорт [подробное описание](doc/vehicle/README.md)
+
+events, events/file - События контаргента [подробное описание](doc/events/README.md)

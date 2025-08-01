@@ -229,7 +229,7 @@ https://api.sbis.ru/vok/license/stat?inn=7712040126
 **Пример запроса**
 
 ```text
-https://api.sbis.ru/vok/license/data?inn=7712040126
+https://api.sbis.ru/vok/license/data?inn=7712040126&source=Другие
 ```
 
 **Пример ответа**

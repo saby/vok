@@ -208,7 +208,7 @@ https://api.sbis.ru/vok/logo?inn=7712040126
 **Пример запроса**
 
 ```text
-https://api.sbis.ru/vok/pdf/registration-information?inn=7712040126
+https://api.sbis.ru/vok/registration-information?inn=7712040126
 ```
 
 ***Пример ответа***

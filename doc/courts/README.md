@@ -58,6 +58,10 @@
         "type": "string",
         "description": "Продолжительность дела"
       },
+      "number_case": {
+        "type": "string",
+        "description": "Номер дела"
+      },
       "cost": {
         "type": "number",
         "description": "Сумма"

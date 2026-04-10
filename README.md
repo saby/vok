@@ -1,12 +1,12 @@
 # API сервиса «Всё о компаниях»
 
-###Клиент для Python3
+### Клиент для Python3
 
 https://pypi.org/project/sabyvok/
 
 [README](client-py/README.md)
 
-###Демо-стенд
+### Демо-стенд
 
 Демо-стенд доступен без авторизации. Дальше к адресной строке добавляется метод и параметры запроса.  
 https://api.sbis.ru/vok-demo/  
@@ -27,7 +27,7 @@ https://sbis.ru/contragents_api_demo - интерфейс для демо сте
 
 
 
-###Получение данных
+### Получение данных
 
 **Авторизация**
 
@@ -70,6 +70,9 @@ https://sbis.ru/contragents_api_demo - интерфейс для демо сте
 Пример запроса:  
 [https://api.sbis.ru/vok-demo/req?inn=7605016030&inn=7736050003](https://api.sbis.ru/vok-demo/req?inn=7605016030&inn=7736050003)
 
+
+**Сноска**  
+Все данные в примерах запроса имеют тестовый характер и не несут действительную информацию по контаргенту из примера
 
 
 **Методы**
@@ -121,3 +124,5 @@ pledges, pledges/file - Залог/Лизинг [подробное описан
 vehicle, vehicle/stat - Автотранспорт [подробное описание](doc/vehicle/README.md)
 
 events, events/file - События контаргента [подробное описание](doc/events/README.md)
+
+news/source, news/stat, news/data - Новости с участием контаргента [подробное описание](doc/news/README.md)

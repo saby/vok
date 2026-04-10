@@ -2,13 +2,16 @@
 
 Получить данные по положению на рынке.
 
-**Ограничения по лицензии**: Функционал недоступен в базовой лицензии.
+**Ограничения по лицензии**: Функционал доступен только в максимальной лицензии.
 
 **URL** : `/market-position/`
 
 **Обязательные параметры** :
 - `inn(str) or ogrn(str)` - ИНН или ОГРН контрагента.
 - `sort (str)` - Параметр сортировки. Возможные значения: "cost" - по стоимости, "revenue" - по выручке.
+
+**Необязательные параметры** :
+- `kpp(str)` - КПП контрагента.
 
 **Метод** : `GET`
 
@@ -77,185 +80,187 @@ https://api.sbis.ru/vok/market-position?inn=7712040126&sort=cost
 
 ```json
 [
-  {
-    "revenue": 378657216000,
-    "cost": 238009543785.975,
-    "inn": "7712040126",
-    "company_name": "Аэрофлот, ПАО",
-    "region": "Москва",
-    "director": "Александровский Сергей Владимирович",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 15539,
-    "employees_number": null
-  },
-  {
-    "revenue": 22918527000,
-    "cost": 40455564000,
-    "inn": "7736046504",
-    "company_name": "Авиапредприятие \"Газпром Авиа\", ООО",
-    "region": "Санкт-Петербург",
-    "director": "Овчаренко Андрей Станиславович",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 4239,
-    "employees_number": null
-  },
-  {
-    "revenue": 155963762000,
-    "cost": 22504125203,
-    "inn": "5448100656",
-    "company_name": "Авиакомпания \"Сибирь\", АО",
-    "region": "Обь",
-    "director": "Клебанов Вадим Анатольевич",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 2,
-    "staff": 8744,
-    "employees_number": null
-  },
-  {
-    "revenue": 17754778000,
-    "cost": 13801335000,
-    "inn": "6501161401",
-    "company_name": "Авиакомпания \"Аврора\", АО",
-    "region": "Южно-Сахалинск",
-    "director": "Сухоребрик Константин Петрович",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 2699,
-    "employees_number": null
-  },
-  {
-    "revenue": 95664065000,
-    "cost": 7770185600,
-    "inn": "6608003013",
-    "company_name": "АК \"Уральские Авиалинии\", ОАО",
-    "region": "Екатеринбург",
-    "director": "Скуратов Сергей Николаевич",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 2,
-    "staff": 5308,
-    "employees_number": null
-  },
-  {
-    "revenue": 7193890000,
-    "cost": 4523951409,
-    "inn": "7710697928",
-    "company_name": "Авиационная Компания \"Ямал\", ООО",
-    "region": "Москва",
-    "director": "Величко Денис Николаевич",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 4,
-    "employees_number": 4
-  },
-  {
-    "revenue": 15508992000,
-    "cost": 3181233000,
-    "inn": "8401008386",
-    "company_name": "АК \"Нордстар\", АО",
-    "region": "Красноярск",
-    "director": "Мохов Леонид Витальевич",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 1528,
-    "employees_number": null
-  },
-  {
-    "revenue": 13581612000,
-    "cost": 869299745,
-    "inn": "3808091156",
-    "company_name": "Авиакомпания \"Ираэро\", АО",
-    "region": "Иркутск",
-    "director": "Лапин Юрий Владимирович",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 1155,
-    "employees_number": 1155
-  },
-  {
-    "revenue": 195073000,
-    "cost": 177843000,
-    "inn": "7714797539",
-    "company_name": "Холидеймакс, ООО",
-    "region": "Москва",
-    "director": "Брагин Андрей Алексеевич",
-    "activity_kind": "Услуги туристических агентств",
-    "trades_intersections": 1,
-    "staff": 53,
-    "employees_number": 53
-  },
-  {
-    "revenue": 281264000,
-    "cost": 177436000,
-    "inn": "7724719890",
-    "company_name": "Эстар Аэро, ООО",
-    "region": "Москва",
-    "director": "Хуснутдинова Миляуша Рашитовна",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 5,
-    "employees_number": 5
-  },
-  {
-    "revenue": 12541093000,
-    "cost": 103342000,
-    "inn": "2312218415",
-    "company_name": "Авиакомпания Азимут, АО",
-    "region": "Ростов-на-Дону",
-    "director": "Екжанов Павел Александрович",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 841,
-    "employees_number": 841
-  },
-  {
-    "revenue": 158950000,
-    "cost": 57648743,
-    "inn": "7707705181",
-    "company_name": "ТМК Логистик, ООО",
-    "region": "Москва",
-    "director": "Грачевский Владимир Владимирович",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 11,
-    "employees_number": 11
-  },
-  {
-    "revenue": 52489000,
-    "cost": 39658624,
-    "inn": "7736608136",
-    "company_name": "Прайдлид, ООО",
-    "region": "Москва",
-    "director": "Хаматханова Лидия Мунтаевна",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 31,
-    "employees_number": 31
-  },
-  {
-    "revenue": 263436000,
-    "cost": 10286000,
-    "inn": "7719802542",
-    "company_name": "Русаэрологистик, ООО",
-    "region": "Москва",
-    "director": "Волнистов Александр Викторович",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 14,
-    "employees_number": 14
-  },
-  {
-    "revenue": 23323095000,
-    "cost": -4144917000,
-    "inn": "7732107883",
-    "company_name": "РЕД Вингс, АО",
-    "region": "Москва",
-    "director": "Солодилин Евгений Александрович",
-    "activity_kind": "Перевозки пассажирские",
-    "trades_intersections": 0,
-    "staff": 1738,
-    "employees_number": null
-  }
+  [
+    {
+      "revenue": 760401133000,
+      "cost": 302655583741.875,
+      "inn": "7712040126",
+      "company_name": "Аэрофлот, ПАО",
+      "region": "Москва",
+      "director": "Александровский Сергей Владимирович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 16085,
+      "employees_number": null
+    },
+    {
+      "revenue": 36944240000,
+      "cost": 209278579000,
+      "inn": "7736046504",
+      "company_name": "Авиапредприятие \"Газпром Авиа\", ООО",
+      "region": "Санкт-Петербург",
+      "director": "Овчаренко Андрей Станиславович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 3533,
+      "employees_number": null
+    },
+    {
+      "revenue": 81242806000,
+      "cost": 125785243659.24,
+      "inn": "7204002873",
+      "company_name": "Авиакомпания \"Ютэйр\", ПАО",
+      "region": "Ханты-Мансийск",
+      "director": "Мартиросов Андрей Зарменович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 2983,
+      "employees_number": null
+    },
+    {
+      "revenue": 110975687000,
+      "cost": 32215958000,
+      "inn": "6608003013",
+      "company_name": "\"Уральские Авиалинии\" АК, ОАО",
+      "region": "Екатеринбург",
+      "director": "  ",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 2,
+      "staff": 4424,
+      "employees_number": null
+    },
+    {
+      "revenue": 52070209000,
+      "cost": 10349812000,
+      "inn": "7732107883",
+      "company_name": "РЕД Вингс, АО",
+      "region": "Жуковский",
+      "director": "Лебедев Александр Валентинович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 1527,
+      "employees_number": null
+    },
+    {
+      "revenue": 314221000,
+      "cost": 281011000,
+      "inn": "7714797539",
+      "company_name": "Холидеймакс, ООО",
+      "region": "Москва",
+      "director": "Брагин Андрей Алексеевич",
+      "activity_kind": "Услуги туристических агентств",
+      "trades_intersections": 1,
+      "staff": 51,
+      "employees_number": 51
+    },
+    {
+      "revenue": 6989898000,
+      "cost": 117117000,
+      "inn": "7219006479",
+      "company_name": "АО \"А247\", АО",
+      "region": "Тюмень",
+      "director": "Зайцев Сергей Викторович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 350,
+      "employees_number": 350
+    },
+    {
+      "revenue": 40247000,
+      "cost": 14434000,
+      "inn": "7715430999",
+      "company_name": "Алтай-Авиа, ООО",
+      "region": "Москва",
+      "director": "Игитов Андрей Леонидович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 4,
+      "employees_number": 4
+    },
+    {
+      "revenue": 268527000,
+      "cost": 12142000,
+      "inn": "7719802542",
+      "company_name": "Русаэрологистик, ООО",
+      "region": "Москва",
+      "director": "Волнистов Александр Викторович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 11,
+      "employees_number": 11
+    },
+    {
+      "revenue": 52119000,
+      "cost": 6659000,
+      "inn": "7736608136",
+      "company_name": "Прайдлид, ООО",
+      "region": "Москва",
+      "director": "Хаматханова Лидия Мунтаевна",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 19,
+      "employees_number": 19
+    },
+    {
+      "revenue": 262130000,
+      "cost": 1560000,
+      "inn": "9715482550",
+      "company_name": "Аэромедицина, ООО",
+      "region": "Москва",
+      "director": "Беляков Александр Александрович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 15,
+      "employees_number": 15
+    },
+    {
+      "revenue": 59121000,
+      "cost": 671000,
+      "inn": "7731463670",
+      "company_name": "Хелипарк Подушкино, ООО",
+      "region": "Москва",
+      "director": "Бобков Алексей Юрьевич",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 1,
+      "employees_number": 1
+    },
+    {
+      "revenue": 145868000,
+      "cost": -15377000,
+      "inn": "7704363765",
+      "company_name": "Транстехперевозки, ООО",
+      "region": "Москва",
+      "director": "Клепов Денис Владимирович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 0,
+      "employees_number": null
+    },
+    {
+      "revenue": 23958157000,
+      "cost": -3235424000,
+      "inn": "2459007621",
+      "company_name": "Азур Эйр, ООО",
+      "region": "Красноярск",
+      "director": "Королев Евгений Борисович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 2106,
+      "employees_number": null
+    },
+    {
+      "revenue": 10556303000,
+      "cost": -12175529000,
+      "inn": "1435149030",
+      "company_name": "Авиакомпания \"Якутия\", АО",
+      "region": "Якутск",
+      "director": "Николаев Владимир Рудольфович",
+      "activity_kind": "Перевозки пассажирские",
+      "trades_intersections": 0,
+      "staff": 856,
+      "employees_number": null
+    }
+  ]
 ]
 ```

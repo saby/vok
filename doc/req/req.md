@@ -7,14 +7,16 @@
 В базовой версии лицензии недоступна информация о количестве работников,
 средней зарплате, форме налогообложения (ключи amount_of_employees,
 taxation_form_code, taxation_form_name)
+Паарметр country_code доступен только в максимальной лицензии
 
 **URL** : `/req`
 
 **Обязательные параметры** :
-- `inn(str) or ogrn(str)` - ИНН или ОГРН контрагента
+- `inn(str) or ogrn(str)` - ИНН или ОГРН контрагента. Для иностранной компании налоговый реквизит подавать в параметр inn
 
 **Необязательные параметры** :
 - `kpp(str)` - КПП контрагента
+- `country_code(str)` - код страны, возможные значения: kz, uz, by
 
 **Метод** : `GET`
 
@@ -36,23 +38,25 @@ taxation_form_code, taxation_form_name)
       "description": "Множественное КПП",
       "type": "array",
       "items": [
-        "type": "object",
-        "properties": {
-          "is_default": {
-            "description": "Признак дефолтного КПП",
-            "type": "bool"
-          },
-          "kpp": {
-            "description": "КПП контрагента",
-            "type": "string"
-          },
-          "date_start": {
-            "description": "Дата получения КПП",
-            "type": "string"
-          },
-          "date_end": {
-            "description": "Дата завершения КПП",
-            "type": "string"
+        {
+          "type": "object",
+          "properties": {
+            "is_default": {
+              "description": "Признак дефолтного КПП",
+              "type": "bool"
+            },
+            "kpp": {
+              "description": "КПП контрагента",
+              "type": "string"
+            },
+            "date_start": {
+              "description": "Дата получения КПП",
+              "type": "string"
+            },
+            "date_end": {
+              "description": "Дата завершения КПП",
+              "type": "string"
+            }
           }
         }
       ]
@@ -467,9 +471,9 @@ taxation_form_code, taxation_form_name)
                   "type": "integer"
                 }
               }
-          }
-        ]
-      },
+            }
+          ]
+        },
         "history_salary_by_fns": {
           "description": "История количества сотрудников по версии fns",
           "type": "array",
@@ -499,9 +503,8 @@ taxation_form_code, taxation_form_name)
                 }
               }
             }
-          }
-        ]
-      }
+          ]
+        }
       }
     },
     "address_is_mass": {
@@ -587,6 +590,41 @@ taxation_form_code, taxation_form_name)
               "type": "string"
             }
           }
+        },
+        "unscrupulous_supplier_v2": {
+          "description": "По данным ФАС в реестре недобросовестных поставщиков. Отдаются все актуальыне записи",
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "date_begin": {
+                  "description": "Дата начала",
+                  "type": "string"
+                },
+                "date_end": {
+                  "description": "Дата окончания",
+                  "type": "string"
+                },
+                "publisher": {
+                  "description": "Кто опубликовал",
+                  "type": "string"
+                },
+                "reason": {
+                  "description": "Причина",
+                  "type": "string"
+                },
+                "actuality_date": {
+                  "description": "Дата сверки с источником",
+                  "type": "string"
+                },
+                "url": {
+                  "description": "ссылка на источник",
+                  "type": "string"
+                }
+              }
+            }
+          ]
         },
         "foreign_agent": {
           "description": "Иностранный агент",
@@ -942,7 +980,29 @@ taxation_form_code, taxation_form_name)
         },
         "business_size": {
           "description": "Когда стал субъектом малого и среднего предпринимательства",
-          "type": "str"
+          "type": "object",
+          "properties": {
+            "actuality_date": {
+              "description": "Дата сверки с источником",
+              "type": "string"
+            },
+            "date_begin": {
+              "description": "Дата начала вхождения в реестр",
+              "type": "string"
+            },
+            "date_end": {
+              "description": "Дата завершения вхождения в реестр",
+              "type": "string"
+            },
+            "size": {
+              "description": "Текст размера организации. MicroSize, SmallSize или MediumSize",
+              "type": "string"
+            },
+            "url": {
+              "description": "ссылка на источник",
+              "type": "string"
+            }
+          }
         },
         "suspended_account": {
           "description": "Приостановлены операции по счетам",
@@ -1196,7 +1256,7 @@ taxation_form_code, taxation_form_name)
                       "type": "string"
                     },
                     "date_begin": {
-                      "description": "Когда начало статус",
+                      "description": "Когда начало статуса",
                       "type": "string"
                     },
                     "date_end": {
@@ -1276,6 +1336,28 @@ taxation_form_code, taxation_form_name)
               "type": "string"
             }
           }
+        },
+        "government_support": {
+          "description": "Получатель государственной поддержки",
+          "type": "object",
+          "properties": {
+            "actuality_date": {
+              "description": "Дата сверки с источником",
+              "type": "string"
+            },
+            "url": {
+              "description": "ссылка на источник",
+              "type": "string"
+            },
+            "date_begin": {
+              "description": "Когда начало статуса",
+              "type": "string"
+            },
+            "date_end": {
+              "description": "Когда конец статуса",
+              "type": "string"
+            }
+          }
         }
       }
     }
@@ -1293,311 +1375,348 @@ https://api.sbis.ru/vok/req?inn=7712040126
 **Пример ответа для базовой лицензии:**
 
 ```json
-{
-  "inn": "7712040126",
-  "kpp": "770401001",
-  "multi_kpp": [
-    {
-      "kpp": "770435001",
-      "date_end": null,
-      "date_start": "2023-03-21",
-      "is_default": null
+[
+  {
+    "inn": "7712040126",
+    "kpp": "770401001",
+    "multi_kpp": [
+      {
+        "kpp": "770401001",
+        "date_end": null,
+        "date_start": null,
+        "is_default": true
+      },
+      {
+        "kpp": "997650001",
+        "date_end": null,
+        "date_start": null,
+        "is_default": false
+      }
+    ],
+    "ogrn": "1027700092661",
+    "okpo": "29063984",
+    "company_short_name": "ОАО \"АЭРОФЛОТ\"",
+    "company_full_name": "ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО \"АЭРОФЛОТ-РОССИЙСКИЕ АВИАЛИНИИ\"",
+    "company_name": "Аэрофлот, ПАО",
+    "condition_code": 1,
+    "okved": "51.10.1,18.12,33.16,41.20,46.14,51.21.1,51.21.3,52.29,55.10,56.10.1,58.19,62.01,62.02,62.09,64.99,68.32.2,70.22,73.20,79.11,85.22,85.42.9,86.21",
+    "reg_number_pf": "087107060532",
+    "reg_number_fss": "770200001477211",
+    "registration_date": "1994-06-21",
+    "liquidation_date": null,
+    "legal_form_text": "Публичные акционерные общества",
+    "entrepreneur": false,
+    "entrepreneur_name": null,
+    "entrepreneur_surname": null,
+    "entrepreneur_patronymic": null,
+    "entrepreneur_floor": null,
+    "entrepreneur_citizenship": null,
+    "entrepreneur_reg_number_pfip": null,
+    "counterparty_extension_okfs": "48",
+    "counterparty_extension_okato": "45286552000",
+    "counterparty_extension_note": null,
+    "address_postal": null,
+    "address_actual": "г. Ярославль",
+    "address_legal": "119002, г. Москва, ул. Арбат, д. 10",
+    "legal_form": "12247",
+    "number_organizations_with_same_phone": null,
+    "number_organizations_with_same_legal_address": 24,
+    "director_surname": "Александровский",
+    "director_name": "Сергей",
+    "director_patronymic": "Владимирович",
+    "director_inn": "770177090572",
+    "director_position": "Генеральный директор",
+    "director_egrul_surname": "Александровский",
+    "director_egrul_name": "Сергей",
+    "director_egrul_patronymic": "Владимирович",
+    "director_egrul_position": "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР",
+    "director_egrul_inn": "770177090572",
+    "main_okved": "51.10.1",
+    "main_okved_name": "Перевозка воздушным пассажирским транспортом, подчиняющимся расписанию",
+    "oktmo": "45374000",
+    "kladr": "770000000000758",
+    "bank_reg_number": null,
+    "bank_correspondent_account": null,
+    "bank_bic": null,
+    "bank_bic_rcc": null,
+    "bank_type_name": null,
+    "sb": null,
+    "bank_rcc": null,
+    "sb_name": null,
+    "bank_rcc_name": null,
+    "sb_code": null,
+    "sb_extra_code": null,
+    "sb_type_name": null,
+    "activity_kind": "Перевозки пассажирские",
+    "activity_type_code": "3502000000",
+    "bank_name": null,
+    "egais": null,
+    "region": "Ярославль",
+    "status_code": null,
+    "brand_name": "Аэрофлот для занятого пространства",
+    "unreliable": {
+      "unreliable_addresses": false,
+      "unreliability_manager": false,
+      "unreliability_founder": false
     },
-    {
-      "kpp": "770401001",
-      "date_end": null,
-      "date_start": "2023-03-21",
-      "is_default": null
-    }
-  ],
-  "ogrn": "1027700092661",
-  "okpo": "29063984",
-  "company_short_name": "ОАО \"АЭРОФЛОТ\"",
-  "company_full_name": "ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО \"АЭРОФЛОТ-РОССИЙСКИЕ АВИАЛИНИИ\"",
-  "company_name": "Аэрофлот, ПАО",
-  "condition_code": 1,
-  "okved": "51.10.1,18.12,33.16,41.20,46.14,51.21.1,51.21.3,52.29,55.10,56.10.1,58.19,62.01,62.02,62.09,64.99,68.32.2,70.22,73.20,79.11,85.22,85.42.9,86.21",
-  "reg_number_pf": "087107060532",
-  "reg_number_fss": "770200001477211",
-  "registration_date": "1994-06-21",
-  "liquidation_date": null,
-  "legal_form_text": "Публичные акционерные общества",
-  "entrepreneur": false,
-  "entrepreneur_name": null,
-  "entrepreneur_surname": null,
-  "entrepreneur_patronymic": null,
-  "entrepreneur_floor": null,
-  "entrepreneur_citizenship": null,
-  "entrepreneur_reg_number_pfip": null,
-  "counterparty_extension_okfs": "48",
-  "counterparty_extension_okato": "45286552000",
-  "counterparty_extension_note": null,
-  "address_postal": null,
-  "address_actual": "119002, г. Москва, ул. Арбат, д. 10",
-  "address_legal": "119019, г. Москва, вн.тер.г. муниципальный округ Арбат, ул. Арбат, д. 1",
-  "legal_form": "12247",
-  "number_organizations_with_same_phone": null,
-  "number_organizations_with_same_legal_address": 3,
-  "director_surname": "Александровский",
-  "director_name": "Сергей",
-  "director_patronymic": "Владимирович",
-  "director_inn": "770177090572",
-  "director_position": "Генеральный директор",
-  "director_egrul_surname": "Александровский",
-  "director_egrul_name": "Сергей",
-  "director_egrul_patronymic": "Владимирович",
-  "director_egrul_position": "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР",
-  "director_egrul_inn": "770177090572",
-  "main_okved": "51.10.1",
-  "main_okved_name": "Перевозка воздушным пассажирским транспортом, подчиняющимся расписанию",
-  "oktmo": "45374000",
-  "kladr": "770000000000758",
-  "bank_reg_number": null,
-  "bank_correspondent_account": null,
-  "bank_bic": null,
-  "bank_bic_rcc": null,
-  "bank_type_name": null,
-  "sb": null,
-  "bank_rcc": null,
-  "sb_name": null,
-  "bank_rcc_name": null,
-  "sb_code": null,
-  "sb_extra_code": null,
-  "sb_type_name": null,
-  "activity_kind": "Перевозки пассажирские",
-  "activity_type_code": "3502000000",
-  "bank_name": null,
-  "egais": null,
-  "region": "Москва",
-  "status_code": null,
-  "brand_name": "Аэрофлот для занятого пространства",
-  "unreliable": {
-    "unreliable_addresses": false,
-    "unreliability_manager": false,
-    "unreliability_founder": false
-  },
-  "shareholders_registers": null,
-  "reg_number_tszn": null,
-  "mercury_guid": null,
-  "parsed_address": "{\"House\": \"Д. 1\", \"Region\": \"Г.МОСКВА\", \"Street\": \"УЛ АРБАТ\", \"PostalCode\": \"119019\", \"InnerCityTerr\": \"ВН.ТЕР.Г. МУНИЦИПАЛЬНЫЙ ОКРУГ АРБАТ\"}",
-  "directors": [
-    {
-      "director_position": "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР",
-      "director_surname": "Александровский",
-      "director_name": "Сергей",
-      "director_patronymic": "Владимирович",
-      "director_inn": "770177090572"
-    }
-  ],
-  "bank_swbic": null,
-  "link": "https://test-online.sbis.ru/contractor/7595b955-0960-4ec0-ab8c-42d9b90129eb",
-  "status_name": null,
-  "condition_name": "Действующий",
-  "spec_reg": {
-    "suspended_account": {
-      "PDF": 44550001,
-      "LastQuery": "2024-04-18"
+    "shareholders_registers": null,
+    "reg_number_tszn": null,
+    "mercury_guid": null,
+    "parsed_address": "{\"DistrictName\":\"МУНИЦИПАЛЬНЫЙ ОКРУГ АРБАТ\",\"DistrictType\":\"ВН.ТЕР.Г.\",\"HouseNum\":\"Д. 10\",\"PostalCode\":\"119002\",\"RegionCode\":\"77\",\"RegionName\":\"Г.МОСКВА\",\"StreetName\":\"АРБАТ\",\"StreetType\":\"УЛ\"}",
+    "directors": [
+      {
+        "director_position": "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР",
+        "director_surname": "Александровский",
+        "director_name": "Сергей",
+        "director_patronymic": "Владимирович",
+        "director_inn": "770177090572"
+      }
+    ],
+    "bank_swbic": null,
+    "link": "https://test-online.sbis.ru/contractor/5cab0800-4b59-11e0-8322-0158022d2283",
+    "status_name": null,
+    "condition_name": "Действующий",
+    "spec_reg": {
+      "in_sanction_ua": {
+        "actuality_date": "06.04.2026",
+        "date_begin": "13.09.2024",
+        "url": "https://drs.nsdc.gov.ua/",
+        "date_end": "9999-12-31"
+      }
     },
-    "in_sanction_ua": {
-      "date_begin": "2023-10-13",
-      "date_end": "9999-12-31",
-      "actuality_date": "2024-03-22",
-      "url": "https://sanctions.nazk.gov.ua/ru/sanction-company/"
-    }
-  },
-  "has_logo": true,
-  "authorized_capital": 3975771215,
-  "is_government_agency": false,
-  "about_company": "Аэрофлот является бесспорным лидером гражданской авиации России, фактическим национальным перевозчиком.\n\nГенеральный директор авиакомпании с 10 апреля 2009 года - Виталий Савельев.\n\nАэрофлот, основанный 17 марта 1923 года, является одной из старейших авиакомпаний мира и одним из наиболее узнаваемых российских брендов.\n\nАэрофлот в 1989 году первым из российских авиакомпаний вступил в Международную ассоциацию воздушного транспорта (IATA).\n\nАэрофлот базируется в г. Москве в аэропорту «Шереметьево». \n\nВ расписании полетов «Зима 2014/2015» - собственные регулярные пассажирские рейсы в 121 пунктов 52 стран мира  (по России 41 пункт).\n\nВ России авиакомпания имеет 4 филиала: в Санкт-Петербурге,  Калининграде,  Перми и Владивостоке.\n\nПриоритетное значение придает развитию внутреннего рынка, присутствию в Сибири и на Дальнем Востоке.\n\nВ течение первых девяти месяцев 2014 года авиакомпания перевезла 17,83 млн. пассажиров – на 13,4% больше по сравнению с аналогичным периодом прошлого года, а совокупный пассажиропоток Группы компаний «Аэрофлот» составил 26,53 млн человек (+10,5%). Пассажирооборот ОАО «Аэрофлот» за девять месяцев 2014 года составил 50,73 млрд. пкм (прирост на 11,8%). Процент занятости пассажирских кресел – 79,5 %.\n\nАэрофлот постоянно увеличивает и совершенствует свой парк воздушных судов, а также построил современный аэропортовый терминал в Шереметьево. Терминал D,   вступивший в строй в конце 2009 года, предназначен для обслуживания рейсов Аэрофлота и партнёров по альянсу SkyTeam.\n\nАэрофлот располагает крупнейшим в Восточной Европе Центром управления полётами.\n\nОткрыл собственную Авиационную школу с запланированным объемом выпуска 160 пилотов (80 экипажей) в год. Подготовка кадров предусмотрена по 120 авиационным специальностям.\n\nСоздал высокотехнологичный Ситуационный центр, который в случае сбойной или кризисной  ситуации позволяет эффективно руководить производственными процессами.",
-  "address_is_mass": false,
-  "director_is_mass": false
-}
+    "has_logo": false,
+    "authorized_capital": 3975771215,
+    "is_government_agency": false,
+    "about_company": "111",
+    "address_is_mass": false,
+    "director_is_mass": false
+  }
+]
 ```
 
 **Пример ответа для расширенной лицензии:**
 
 ```json
-{
-  "inn": "7712040126",
-  "kpp": "770401001",
-  "multi_kpp": [
-    {
-      "kpp": "770435001",
-      "date_end": null,
-      "date_start": "2023-03-21",
-      "is_default": null
-    },
-    {
-      "kpp": "770401001",
-      "date_end": null,
-      "date_start": "2023-03-21",
-      "is_default": null
-    }
-  ],
-  "ogrn": "1027700092661",
-  "okpo": "29063984",
-  "company_short_name": "ОАО \"АЭРОФЛОТ\"",
-  "company_full_name": "ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО \"АЭРОФЛОТ-РОССИЙСКИЕ АВИАЛИНИИ\"",
-  "company_name": "Аэрофлот, ПАО",
-  "condition_code": 1,
-  "okved": "51.10.1,18.12,33.16,41.20,46.14,51.21.1,51.21.3,52.29,55.10,56.10.1,58.19,62.01,62.02,62.09,64.99,68.32.2,70.22,73.20,79.11,85.22,85.42.9,86.21",
-  "reg_number_pf": "087107060532",
-  "reg_number_fss": "770200001477211",
-  "registration_date": "1994-06-21",
-  "liquidation_date": null,
-  "legal_form_text": "Публичные акционерные общества",
-  "entrepreneur": false,
-  "entrepreneur_name": null,
-  "entrepreneur_surname": null,
-  "entrepreneur_patronymic": null,
-  "entrepreneur_floor": null,
-  "entrepreneur_citizenship": null,
-  "entrepreneur_reg_number_pfip": null,
-  "counterparty_extension_okfs": "48",
-  "counterparty_extension_okato": "45286552000",
-  "counterparty_extension_note": null,
-  "address_postal": null,
-  "address_actual": "119002, г. Москва, ул. Арбат, д. 10",
-  "address_legal": "119019, г. Москва, вн.тер.г. муниципальный округ Арбат, ул. Арбат, д. 1",
-  "legal_form": "12247",
-  "number_organizations_with_same_phone": null,
-  "number_organizations_with_same_legal_address": 3,
-  "director_surname": "Александровский",
-  "director_name": "Сергей",
-  "director_patronymic": "Владимирович",
-  "director_inn": "770177090572",
-  "director_position": "Генеральный директор",
-  "director_egrul_surname": "Александровский",
-  "director_egrul_name": "Сергей",
-  "director_egrul_patronymic": "Владимирович",
-  "director_egrul_position": "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР",
-  "director_egrul_inn": "770177090572",
-  "main_okved": "51.10.1",
-  "main_okved_name": "Перевозка воздушным пассажирским транспортом, подчиняющимся расписанию",
-  "oktmo": "45374000",
-  "kladr": "770000000000758",
-  "bank_reg_number": null,
-  "bank_correspondent_account": null,
-  "bank_bic": null,
-  "bank_bic_rcc": null,
-  "bank_type_name": null,
-  "sb": null,
-  "bank_rcc": null,
-  "sb_name": null,
-  "bank_rcc_name": null,
-  "sb_code": null,
-  "sb_extra_code": null,
-  "sb_type_name": null,
-  "activity_kind": "Перевозки пассажирские",
-  "activity_type_code": "3502000000",
-  "bank_name": null,
-  "egais": null,
-  "region": "Москва",
-  "status_code": null,
-  "brand_name": "Аэрофлот для занятого пространства",
-  "unreliable": {
-    "unreliable_addresses": false,
-    "unreliability_manager": false,
-    "unreliability_founder": false
-  },
-  "shareholders_registers": null,
-  "reg_number_tszn": null,
-  "mercury_guid": null,
-  "amount_of_employees": {
-    "amount_by_nalogru": null,
-    "amount_calculated_by_spp": 19301,
-    "amount_difference": null,
-    "amount_is_grow": true,
-    "average_salary_by_nalogru": 133282.78,
-    "average_salary_by_spp": 133282.78,
-    "average_salary_difference": -51901,
-    "average_salary_is_grow": false,
-    "history_amount": [
+[
+  {
+    "inn": "7712040126",
+    "kpp": "770401001",
+    "multi_kpp": [
       {
-        "count": 19301,
-        "difference": 0,
-        "difference_percent": null,
-        "is_grow": true,
-        "source_id": 212,
-        "spp": true,
-        "year": 2021
+        "kpp": "770401001",
+        "date_end": null,
+        "date_start": null,
+        "is_default": true
       },
       {
-        "count": 16192,
-        "difference": 0,
-        "difference_percent": null,
-        "is_grow": true,
-        "source_id": 212,
-        "spp": true,
-        "year": 2020
-      },
-      {
-        "count": 16192,
-        "difference": 0,
-        "difference_percent": null,
-        "is_grow": true,
-        "source_id": 212,
-        "spp": true,
-        "year": 2018
+        "kpp": "997650001",
+        "date_end": null,
+        "date_start": null,
+        "is_default": false
       }
     ],
-    "history_salary_by_fns": [
+    "ogrn": "1027700092661",
+    "okpo": "29063984",
+    "company_short_name": "ОАО \"АЭРОФЛОТ\"",
+    "company_full_name": "ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО \"АЭРОФЛОТ-РОССИЙСКИЕ АВИАЛИНИИ\"",
+    "company_name": "Аэрофлот, ПАО",
+    "condition_code": 1,
+    "okved": "51.10.1,18.12,33.16,41.20,46.14,51.21.1,51.21.3,52.29,55.10,56.10.1,58.19,62.01,62.02,62.09,64.99,68.32.2,70.22,73.20,79.11,85.22,85.42.9,86.21",
+    "reg_number_pf": "087107060532",
+    "reg_number_fss": "770200001477211",
+    "registration_date": "1994-06-21",
+    "liquidation_date": null,
+    "legal_form_text": "Публичные акционерные общества",
+    "entrepreneur": false,
+    "entrepreneur_name": null,
+    "entrepreneur_surname": null,
+    "entrepreneur_patronymic": null,
+    "entrepreneur_floor": null,
+    "entrepreneur_citizenship": null,
+    "entrepreneur_reg_number_pfip": null,
+    "counterparty_extension_okfs": "48",
+    "counterparty_extension_okato": "45286552000",
+    "counterparty_extension_note": null,
+    "address_postal": null,
+    "address_actual": "г. Ярославль",
+    "address_legal": "119002, г. Москва, ул. Арбат, д. 10",
+    "legal_form": "12247",
+    "number_organizations_with_same_phone": null,
+    "number_organizations_with_same_legal_address": 24,
+    "director_surname": "Александровский",
+    "director_name": "Сергей",
+    "director_patronymic": "Владимирович",
+    "director_inn": "770177090572",
+    "director_position": "Генеральный директор",
+    "director_egrul_surname": "Александровский",
+    "director_egrul_name": "Сергей",
+    "director_egrul_patronymic": "Владимирович",
+    "director_egrul_position": "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР",
+    "director_egrul_inn": "770177090572",
+    "main_okved": "51.10.1",
+    "main_okved_name": "Перевозка воздушным пассажирским транспортом, подчиняющимся расписанию",
+    "oktmo": "45374000",
+    "kladr": "770000000000758",
+    "bank_reg_number": null,
+    "bank_correspondent_account": null,
+    "bank_bic": null,
+    "bank_bic_rcc": null,
+    "bank_type_name": null,
+    "sb": null,
+    "bank_rcc": null,
+    "sb_name": null,
+    "bank_rcc_name": null,
+    "sb_code": null,
+    "sb_extra_code": null,
+    "sb_type_name": null,
+    "activity_kind": "Перевозки пассажирские",
+    "activity_type_code": "3502000000",
+    "bank_name": null,
+    "egais": null,
+    "region": "Ярославль",
+    "status_code": null,
+    "brand_name": "Аэрофлот для занятого пространства",
+    "unreliable": {
+      "unreliable_addresses": false,
+      "unreliability_manager": false,
+      "unreliability_founder": false
+    },
+    "shareholders_registers": null,
+    "reg_number_tszn": null,
+    "mercury_guid": null,
+    "amount_of_employees": {
+      "amount_by_nalogru": null,
+      "amount_calculated_by_spp": 16085,
+      "amount_difference": null,
+      "amount_is_grow": true,
+      "average_salary_by_nalogru": null,
+      "average_salary_by_spp": null,
+      "average_salary_difference": null,
+      "average_salary_is_grow": null,
+      "history_amount": [
+        {
+          "count": 16085,
+          "difference": 0,
+          "difference_percent": null,
+          "is_grow": true,
+          "source_id": 212,
+          "spp": true,
+          "year": 2021
+        },
+        {
+          "count": 15094,
+          "difference": 0,
+          "difference_percent": null,
+          "is_grow": true,
+          "source_id": 212,
+          "spp": true,
+          "year": 2020
+        },
+        {
+          "count": 17789,
+          "difference": 0,
+          "difference_percent": null,
+          "is_grow": true,
+          "source_id": 212,
+          "spp": true,
+          "year": 2019
+        },
+        {
+          "count": 19997,
+          "difference": 0,
+          "difference_percent": null,
+          "is_grow": true,
+          "source_id": 212,
+          "spp": true,
+          "year": 2018
+        },
+        {
+          "count": 20781,
+          "difference": 0,
+          "difference_percent": null,
+          "is_grow": true,
+          "source_id": 212,
+          "spp": true,
+          "year": 2017
+        }
+      ],
+      "history_salary_by_fns": [],
+      "hide_salary": true
+    },
+    "parsed_address": "{\"DistrictName\":\"МУНИЦИПАЛЬНЫЙ ОКРУГ АРБАТ\",\"DistrictType\":\"ВН.ТЕР.Г.\",\"HouseNum\":\"Д. 10\",\"PostalCode\":\"119002\",\"RegionCode\":\"77\",\"RegionName\":\"Г.МОСКВА\",\"StreetName\":\"АРБАТ\",\"StreetType\":\"УЛ\"}",
+    "taxation_form_code": 1,
+    "directors": [
       {
-        "count": 133282.78,
-        "difference": -51901.56,
-        "difference_percent": "28%",
-        "is_grow": false,
-        "year": 2021
-      },
-      {
-        "count": 185184.34,
-        "difference": -47262.11,
-        "difference_percent": "20%",
-        "is_grow": false,
-        "year": 2020
-      },
-      {
-        "count": 232446.45,
-        "year": 2018
+        "director_position": "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР",
+        "director_surname": "Александровский",
+        "director_name": "Сергей",
+        "director_patronymic": "Владимирович",
+        "director_inn": "770177090572"
       }
     ],
-    "hide_salary": true
-  },
-  "parsed_address": "{\"House\": \"Д. 1\", \"Region\": \"Г.МОСКВА\", \"Street\": \"УЛ АРБАТ\", \"PostalCode\": \"119019\", \"InnerCityTerr\": \"ВН.ТЕР.Г. МУНИЦИПАЛЬНЫЙ ОКРУГ АРБАТ\"}",
-  "taxation_form_code": 1,
-  "directors": [
-    {
-      "director_position": "ГЕНЕРАЛЬНЫЙ ДИРЕКТОР",
-      "director_surname": "Александровский",
-      "director_name": "Сергей",
-      "director_patronymic": "Владимирович",
-      "director_inn": "770177090572"
-    }
-  ],
-  "bank_swbic": null,
-  "link": "https://test-online.sbis.ru/contractor/7595b955-0960-4ec0-ab8c-42d9b90129eb",
-  "status_name": null,
-  "condition_name": "Действующий",
-  "spec_reg": {
-    "suspended_account": {
-      "PDF": 44550001,
-      "LastQuery": "2024-04-18"
+    "bank_swbic": null,
+    "link": "https://test-online.sbis.ru/contractor/5cab0800-4b59-11e0-8322-0158022d2283",
+    "status_name": null,
+    "condition_name": "Действующий",
+    "spec_reg": {
+      "in_sanction_ua": {
+        "actuality_date": "06.04.2026",
+        "date_begin": "13.09.2024",
+        "url": "https://drs.nsdc.gov.ua/",
+        "date_end": "9999-12-31"
+      }
     },
-    "in_sanction_ua": {
-      "date_begin": "2023-10-13",
-      "date_end": "9999-12-31",
-      "actuality_date": "2024-03-22",
-      "url": "https://sanctions.nazk.gov.ua/ru/sanction-company/"
-    }
-  },
-  "has_logo": true,
-  "authorized_capital": 3975771215,
-  "is_government_agency": false,
-  "about_company": "Аэрофлот является бесспорным лидером гражданской авиации России, фактическим национальным перевозчиком.\n\nГенеральный директор авиакомпании с 10 апреля 2009 года - Виталий Савельев.\n\nАэрофлот, основанный 17 марта 1923 года, является одной из старейших авиакомпаний мира и одним из наиболее узнаваемых российских брендов.\n\nАэрофлот в 1989 году первым из российских авиакомпаний вступил в Международную ассоциацию воздушного транспорта (IATA).\n\nАэрофлот базируется в г. Москве в аэропорту «Шереметьево». \n\nВ расписании полетов «Зима 2014/2015» - собственные регулярные пассажирские рейсы в 121 пунктов 52 стран мира  (по России 41 пункт).\n\nВ России авиакомпания имеет 4 филиала: в Санкт-Петербурге,  Калининграде,  Перми и Владивостоке.\n\nПриоритетное значение придает развитию внутреннего рынка, присутствию в Сибири и на Дальнем Востоке.\n\nВ течение первых девяти месяцев 2014 года авиакомпания перевезла 17,83 млн. пассажиров – на 13,4% больше по сравнению с аналогичным периодом прошлого года, а совокупный пассажиропоток Группы компаний «Аэрофлот» составил 26,53 млн человек (+10,5%). Пассажирооборот ОАО «Аэрофлот» за девять месяцев 2014 года составил 50,73 млрд. пкм (прирост на 11,8%). Процент занятости пассажирских кресел – 79,5 %.\n\nАэрофлот постоянно увеличивает и совершенствует свой парк воздушных судов, а также построил современный аэропортовый терминал в Шереметьево. Терминал D,   вступивший в строй в конце 2009 года, предназначен для обслуживания рейсов Аэрофлота и партнёров по альянсу SkyTeam.\n\nАэрофлот располагает крупнейшим в Восточной Европе Центром управления полётами.\n\nОткрыл собственную Авиационную школу с запланированным объемом выпуска 160 пилотов (80 экипажей) в год. Подготовка кадров предусмотрена по 120 авиационным специальностям.\n\nСоздал высокотехнологичный Ситуационный центр, который в случае сбойной или кризисной  ситуации позволяет эффективно руководить производственными процессами.",
-  "address_is_mass": false,
-  "director_is_mass": false,
-  "taxation_form_name": [
-    "ОСНО"
-  ]
-}
+    "has_logo": false,
+    "authorized_capital": 3975771215,
+    "is_government_agency": false,
+    "about_company": "111",
+    "address_is_mass": false,
+    "director_is_mass": false,
+    "taxation_form_name": [
+      "ОСНО"
+    ]
+  }
+]
+```
+
+**Пример запроса иностранной компании**
+
+```text
+https://api.sbis.ru/vok/req?inn=150140014756&country_code=kz
+```
+
+**Пример ответа для максимальной лицензии:**
+
+```json
+[
+  {
+    "brand_name": null,
+    "region": null,
+    "bank_bic": null,
+    "about_company": null,
+    "company_name": "Sk-medica, ТОО",
+    "liquidation_date": null,
+    "bank_correspondent_account": null,
+    "address_legal": "050022, ГОРОД АЛМАТЫ, РАЙОН БОСТАНДЫКСКИЙ, УЛ. МАСАНЧИ, Д. 98Б",
+    "bank_swbic": null,
+    "registration_date": "2015-01-19",
+    "logo_url": null,
+    "status_name": "Действующий",
+    "activity_kind": "Оптовая торговля фармацевтическими товарами",
+    "address_actual": null,
+    "status_code": 1,
+    "inn": "150140014756",
+    "directors": [
+      {
+        "director_inn": "610121300618",
+        "director_name": "Koişibaev Kerim Baiangalievich"
+      }
+    ],
+    "founders": null,
+    "spec_reg": {},
+    "activity_type_code": "4646",
+    "link": "https://test-online.sbis.ru/contractor/ea99c836-c87d-11ee-85cc-000a3f07018e",
+    "company_full_name": "Товарищество с ограниченной ответственностью \"SK-Medica\""
+  }
+]
 ```

@@ -123,6 +123,6 @@ pledges, pledges/file - Залог/Лизинг [подробное описан
 
 vehicle, vehicle/stat - Автотранспорт [подробное описание](doc/vehicle/README.md)
 
-events, events/file - События контаргента [подробное описание](doc/events/README.md)
+events, events/file - События контрагента [подробное описание](doc/events/README.md)
 
-news/source, news/stat, news/data - Новости с участием контаргента [подробное описание](doc/news/README.md)
+news/source, news/stat, news/data - Новости с участием контрагента [подробное описание](doc/news/README.md)
